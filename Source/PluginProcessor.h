@@ -9,7 +9,7 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include <Mu45FilterCalc/Mu45FilterCalc/Mu45FilterCalc.h>
+#include <Mu45FilterCalc/Mu45FilterCalc.h>
 #include <StkLite-4.6.2/StkLite-4.6.2/BiQuad.h>
 
 //==============================================================================
@@ -58,6 +58,9 @@ public:
     //==============================================================================
 
     void calcAlgorithmParams();
+
+    void setBoolParam(const String& paramID, bool value);
+
     void soloLowBand(bool isEnabled);
     void soloMidBand(bool isEnabled);
     void soloHighBand(bool isEnabled);

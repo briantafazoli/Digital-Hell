@@ -360,23 +360,23 @@ void BrianTPFinalDigitalHellAudioProcessor::calcAlgorithmParams() {
     midDWSP = calcDWSP(rawMidDWSP, maxDWSP);
     highDWSP = calcDWSP(rawHiDWSP, maxDWSP);
 
-    lowEnabled = mLowEnabledBool->get();
-    midEnabled = mMidEnabledBool->get();
-    highEnabled = mHighEnabledBool->get();
+    lowEnabled = *parameters.getRawParameterValue("LoEnable");
+    midEnabled = *parameters.getRawParameterValue("MidEnable");
+    highEnabled = *parameters.getRawParameterValue("HiEnable");
 
 }
 
-void BrianTPFinalDigitalHellAudioProcessor::soloLowBand(bool isEnabled) { 
+void BrianTPFinalDigitalHellAudioProcessor::soloLowBand(bool isEnabled) {
 
     if (isEnabled) {
-        mLowEnabledBool->setValueNotifyingHost(true);
-        mMidEnabledBool->setValueNotifyingHost(false);
-        mHighEnabledBool->setValueNotifyingHost(false);
+        setBoolParam("LoEnable", true);
+        setBoolParam("MidEnable", false);
+        setBoolParam("HiEnable", false);
     }
     else {
-        mLowEnabledBool->setValueNotifyingHost(true);
-        mMidEnabledBool->setValueNotifyingHost(true);
-        mHighEnabledBool->setValueNotifyingHost(true);
+        setBoolParam("LoEnable", true);
+        setBoolParam("MidEnable", true);
+        setBoolParam("HiEnable", true);
     }
 
 }
@@ -384,14 +384,14 @@ void BrianTPFinalDigitalHellAudioProcessor::soloLowBand(bool isEnabled) {
 void BrianTPFinalDigitalHellAudioProcessor::soloMidBand(bool isEnabled) {
 
     if (isEnabled) {
-        mLowEnabledBool->setValueNotifyingHost(false);
-        mMidEnabledBool->setValueNotifyingHost(true);
-        mHighEnabledBool->setValueNotifyingHost(false);
+        setBoolParam("LoEnable", false);
+        setBoolParam("MidEnable", true);
+        setBoolParam("HiEnable", false);
     }
     else {
-        mLowEnabledBool->setValueNotifyingHost(true);
-        mMidEnabledBool->setValueNotifyingHost(true);
-        mHighEnabledBool->setValueNotifyingHost(true);
+        setBoolParam("LoEnable", true);
+        setBoolParam("MidEnable", true);
+        setBoolParam("HiEnable", true);
     }
 
 }
@@ -399,14 +399,26 @@ void BrianTPFinalDigitalHellAudioProcessor::soloMidBand(bool isEnabled) {
 void BrianTPFinalDigitalHellAudioProcessor::soloHighBand(bool isEnabled) {
 
     if (isEnabled) {
-        mLowEnabledBool->setValueNotifyingHost(false);
-        mMidEnabledBool->setValueNotifyingHost(false);
-        mHighEnabledBool->setValueNotifyingHost(true);
+        setBoolParam("LoEnable", false);
+        setBoolParam("MidEnable", false);
+        setBoolParam("HiEnable", true);
     }
     else {
-        mLowEnabledBool->setValueNotifyingHost(true);
-        mMidEnabledBool->setValueNotifyingHost(true);
-        mHighEnabledBool->setValueNotifyingHost(true);
+        setBoolParam("LoEnable", true);
+        setBoolParam("MidEnable", true);
+        setBoolParam("HiEnable", true);
+    }
+
+}
+
+
+void BrianTPFinalDigitalHellAudioProcessor::setBoolParam(const String& paramID, bool value) {
+
+    if (auto* p = parameters.getRawParameterValue(paramID)) {
+
+        p->store(value ? 1.0f : 0.0f);
+        if (auto* param = parameters.getParameter(paramID)) param->sendValueChangedMessageToListeners(p->load());
+
     }
 
 }
