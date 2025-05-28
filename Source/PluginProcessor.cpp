@@ -464,48 +464,138 @@ AudioProcessorValueTreeState::ParameterLayout BrianTPFinalDigitalHellAudioProces
     // ========== FILTERS ==========
 
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        "LoHPFCutoffFreq", "Low Band HPF Cutoff Frequency (Hz)",
-        juce::NormalisableRange<float>(20.0f, 500.0f), 50.0f));
+        "LoHPFCutoffFreq", // ID Name
+        "Low Band HPF Cutoff Frequency (Hz)", // DAW Name
+        juce::NormalisableRange<float>(20.0f, 500.0f), // Range
+        50.0f, // Default value
+        " Hz", // Suffix
+        juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)
+        [](float value, int) {                      // Lambda for displaying value
+            return juce::String(static_cast<int>(value));
+        },
+        nullptr                                     // Optional lambda for converting text back to value (not needed for now)
+        ));
 
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        "LoLPFCutoffFreq", "Low Band LPF / Mid Band HPF Cutoff Frequency (Hz)",
-        juce::NormalisableRange<float>(50.0f, 5000.0f), 500.0f));
+        "LoLPFCutoffFreq", // ID Name
+        "Low Band LPF / Mid Band HPF Cutoff Frequency (Hz)",
+        juce::NormalisableRange<float>(50.0f, 5000.0f), 
+        500.0f, // Default Value
+        " Hz", // Suffix
+        juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)
+        [](float value, int) {                      // Lambda for displaying value
+            return juce::String(static_cast<int>(value));
+        },
+        nullptr
+        ));
 
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        "HiHPFCutoffFreq", "High Band HPF / Mid Band LPF Cutoff Frequency (Hz)",
-        juce::NormalisableRange<float>(500.0f, 15000.0f), 5000.0f));
+        "HiHPFCutoffFreq", // ID Name
+        "High Band HPF / Mid Band LPF Cutoff Frequency (Hz)",
+        juce::NormalisableRange<float>(500.0f, 15000.0f), 
+        5000.0f,
+        " Hz", // Suffix
+        juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)
+        [](float value, int) {                      // Lambda for displaying value
+            return juce::String(static_cast<int>(value));
+        },
+        nullptr
+        ));
 
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        "HiLPFCutoffFreq", "High Band LPF Cutoff Frequency (Hz)",
-        juce::NormalisableRange<float>(2500.0f, 20000.0f), 15000.0f));
+        "HiLPFCutoffFreq", 
+        "High Band LPF Cutoff Frequency (Hz)",
+        juce::NormalisableRange<float>(2500.0f, 20000.0f), 
+        15000.0f,
+        " Hz", // Suffix
+        juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)
+        [](float value, int) {                      // Lambda for displaying value
+            return juce::String(static_cast<int>(value));
+        },
+        nullptr
+        ));
 
     // ========== BITCRUSH ==========
 
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        "LoDWSP", "Low Band Downsample %",
-        juce::NormalisableRange<float>(0.0f, 100.0f), 20.0f));
+        "LoDWSP", 
+        "Low Band Downsample %",
+        juce::NormalisableRange<float>(0.0f, 100.0f), 
+        20.0f,
+        " %", // Suffix
+        juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)
+        [](float value, int) {                      // Lambda for displaying value
+            return juce::String(static_cast<int>(value));
+        },
+        nullptr
+        ));
 
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        "MidDWSP", "Mid Band Downsample %",
-        juce::NormalisableRange<float>(0.0f, 100.0f), 20.0f));
+        "MidDWSP", 
+        "Mid Band Downsample %",
+        juce::NormalisableRange<float>(0.0f, 100.0f), 
+        20.0f,
+        " %", // Suffix
+        juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)
+        [](float value, int) {                      // Lambda for displaying value
+            return juce::String(static_cast<int>(value));
+        },
+        nullptr
+        ));
 
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        "HiDWSP", "High Band Downsample %",
-        juce::NormalisableRange<float>(0.0f, 100.0f), 20.0f));
+        "HiDWSP", 
+        "High Band Downsample %",
+        juce::NormalisableRange<float>(0.0f, 100.0f), 
+        20.0f,
+        " %", // Suffix
+        juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)
+        [](float value, int) {                      // Lambda for displaying value
+            return juce::String(static_cast<int>(value));
+        },
+        nullptr
+        ));
 
     // ========== GAIN ==========
 
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        "LoGain", "Low Band Gain",
-        juce::NormalisableRange<float>(-60.0f, 6.0f), 0.0f));
+        "LoGain", 
+        "Low Band Gain",
+        juce::NormalisableRange<float>(-60.0f, 6.0f), 
+        0.0f,
+        " dB", // Suffix
+        juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)
+        [](float value, int) {                      // Lambda for displaying value
+            return juce::String(static_cast<int>(value));
+        },
+        nullptr
+        ));
 
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        "MidGain", "Mid Band Gain",
-        juce::NormalisableRange<float>(-60.0f, 6.0f), 0.0f));
+        "MidGain", 
+        "Mid Band Gain",
+        juce::NormalisableRange<float>(-60.0f, 6.0f), 
+        0.0f,
+        " %", // Suffix
+        juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)
+        [](float value, int) {                      // Lambda for displaying value
+            return juce::String(static_cast<int>(value));
+        },
+        nullptr
+        ));
 
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        "HiGain", "High Band Gain",
-        juce::NormalisableRange<float>(-60.0f, 6.0f), 0.0f));
+        "HiGain", 
+        "High Band Gain",
+        juce::NormalisableRange<float>(-60.0f, 6.0f), 
+        0.0f,
+        " %", // Suffix
+        juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)
+        [](float value, int) {                      // Lambda for displaying value
+            return juce::String(static_cast<int>(value));
+        },
+        nullptr
+        ));
 
     // ========== ENABLE TOGGLES ==========
 

@@ -69,6 +69,8 @@ public:
 
     static AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
 
+    AudioProcessorValueTreeState& getAPVTS() { return parameters; }
+
 
 private:
     //==============================================================================

@@ -49,6 +49,18 @@ private:
     ToggleButton mMidSoloEnable;
     ToggleButton mHighSoloEnable;
 
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> lowHPFcAttachment;
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> lowLPMidHPFcAttachment;
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> midLPHighHPFcAttachment;
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> highLPFcAttachment;
+
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> lowDWSPAttachment;
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> midDWSPAttachment;
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> highDWSPAttachment;
+
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> lowDBAttachment;
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> midDBAttachment;
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> highDBAttachment;
 
     juce::Rectangle<int> getSquare(float centerX, float centerY, float sideLength) {
         // Calculate and return the rectangle
