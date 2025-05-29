@@ -291,6 +291,9 @@ void BrianTPFinalDigitalHellAudioProcessor::processBlock(juce::AudioBuffer<float
         channelDataLeft[samp] = lowChannelDataL[samp] + midChannelDataL[samp] + highChannelDataL[samp];
         channelDataRight[samp] = lowChannelDataR[samp] + midChannelDataR[samp] + highChannelDataR[samp];
 
+        channelDataLeft[samp] = std::round(channelDataLeft[samp] * levels) / levels;
+        channelDataRight[samp] = std::round(channelDataRight[samp] * levels) / levels;
+
         }
 
 }
@@ -300,8 +303,13 @@ float calcLinearGain(float rawValue) {
     return linearGain;
 }
 
-int calcDWSP(float rawValue, int maxDWSP) {
-    int output = static_cast<int> (rawValue + (maxDWSP - 1.0f) / 100.0f) - 1;
+int BrianTPFinalDigitalHellAudioProcessor::calcDWSP(float rawValue) {
+    int output = static_cast<int> (rawValue + maxDWSP / 100.0f) - 1;
+    return output;
+}
+
+float BrianTPFinalDigitalHellAudioProcessor::calcBitDepth(float rawValue) {
+    float output = maxBitDepth - (maxBitDepth * (rawValue / 100)) + 1;
     return output;
 }
 
@@ -360,9 +368,13 @@ void BrianTPFinalDigitalHellAudioProcessor::calcAlgorithmParams() {
     float rawMidDWSP = *parameters.getRawParameterValue("MidDWSP");
     float rawHiDWSP = *parameters.getRawParameterValue("HiDWSP");
 
-    lowDWSP = calcDWSP(rawLoDWSP, maxDWSP);
-    midDWSP = calcDWSP(rawMidDWSP, maxDWSP);
-    highDWSP = calcDWSP(rawHiDWSP, maxDWSP);
+    lowDWSP = calcDWSP(rawLoDWSP);
+    midDWSP = calcDWSP(rawMidDWSP);
+    highDWSP = calcDWSP(rawHiDWSP);
+
+    int rawBitDepth = *parameters.getRawParameterValue("BitDepth");
+    bitDepth = calcBitDepth(rawBitDepth);
+    levels = pow(2.0f, bitDepth - 1);
 
     lowEnabled = *parameters.getRawParameterValue("LoEnable");
     midEnabled = *parameters.getRawParameterValue("MidEnable");
@@ -580,7 +592,7 @@ AudioProcessorValueTreeState::ParameterLayout BrianTPFinalDigitalHellAudioProces
         "Mid Band Gain",
         juce::NormalisableRange<float>(-60.0f, 6.0f), 
         0.0f,
-        " %", // Suffix
+        " dB", // Suffix
         juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)
         [](float value, int) {                      // Lambda for displaying value
             return juce::String(static_cast<int>(value));
@@ -593,13 +605,28 @@ AudioProcessorValueTreeState::ParameterLayout BrianTPFinalDigitalHellAudioProces
         "High Band Gain",
         juce::NormalisableRange<float>(-60.0f, 6.0f), 
         0.0f,
-        " %", // Suffix
+        " dB", // Suffix
         juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)
         [](float value, int) {                      // Lambda for displaying value
             return juce::String(static_cast<int>(value));
         },
         nullptr
         ));
+
+    // ========== BIT DEPTH ===============
+
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        "BitDepth",
+        "Bit Depth",
+        juce::NormalisableRange<float>(0.0f, 100.0f),
+        20.0f,
+        " %", // Suffix
+        juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)
+        [](float value, int) {                      // Lambda for displaying value
+            return juce::String(static_cast<int>(value));
+        },
+        nullptr
+    ));
 
     // ========== ENABLE TOGGLES ==========
 

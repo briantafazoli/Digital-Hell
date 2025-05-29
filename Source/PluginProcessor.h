@@ -59,6 +59,9 @@ public:
 
     void calcAlgorithmParams();
 
+    int calcDWSP(float rawValue);
+    float calcBitDepth(float rawValue);
+
     void setBoolParam(const String& paramID, bool value);
 
     void soloLowBand(bool isEnabled);
@@ -96,6 +99,8 @@ private:
     AudioParameterFloat* mDBMidGainParam;
     AudioParameterFloat* mDBHighGainParam;
 
+    AudioParameterFloat* mBitDepthParam;
+
     AudioParameterBool* mLowEnabledBool;
     AudioParameterBool* mMidEnabledBool;
     AudioParameterBool* mHighEnabledBool;
@@ -115,11 +120,15 @@ private:
     int midDWSP; // Represents the amount of samples skipped by the processor for every tick on the mid band
     int highDWSP; // Represents the amount of samples skipped by the processor for every tick on the high band
 
+    int bitDepth;
+    float levels;
+
     float linearGainLow;
     float linearGainMid;
     float linearGainHigh;
 
-    static constexpr int maxDWSP = 128; // The max possible downsample rate;
+    static constexpr int maxDWSP = 127; // The max possible downsample rate;
+    static constexpr int maxBitDepth = 11; // The max possible Bit Depth;
 
     float mFs; // Inital Sample Rate
 
