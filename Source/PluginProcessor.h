@@ -60,7 +60,7 @@ public:
     void calcAlgorithmParams();
 
     int calcDWSP(float rawValue);
-    float calcBitDepth(float rawValue);
+    int calcBitDepth(float rawValue);
 
     void setBoolParam(const String& paramID, bool value);
 
@@ -86,25 +86,6 @@ private:
     stk::BiQuad mHighHPFilterL; stk::BiQuad mHighHPFilterR;
     stk::BiQuad mHighLPFilterL; stk::BiQuad mHighLPFilterR;
 
-    AudioParameterFloat* mLowHPFCutoffFreqParam; // Dictates the highpass frequency for the low band
-    AudioParameterFloat* mLowLPFCutoffFreqParam; // Dictates the lowpass frequency for the low band and the highpass frequency for the middle band
-    AudioParameterFloat* mHighHPFCutoffFreqParam; // Dictates the highpass frequency for the high band and the lowpass frequency for the middle band
-    AudioParameterFloat* mHighLPFCutoffFreqParam; // Dictates the lowpass frequency for the high band
-    
-    AudioParameterFloat* mLowDWSPParam; // Dictates the downsampling from the given sample rate for the low band
-    AudioParameterFloat* mMidDWSPParam; // Dictates the downsampling from the given sample rate for the mid band
-    AudioParameterFloat* mHighDWSPParam; // Dictates the downsampling from the given sample rate for the high band
-
-    AudioParameterFloat* mDBLowGainParam;
-    AudioParameterFloat* mDBMidGainParam;
-    AudioParameterFloat* mDBHighGainParam;
-
-    AudioParameterFloat* mBitDepthParam;
-
-    AudioParameterBool* mLowEnabledBool;
-    AudioParameterBool* mMidEnabledBool;
-    AudioParameterBool* mHighEnabledBool;
-
     bool lowEnabled = true;
     bool midEnabled = true;
     bool highEnabled = true;
@@ -120,8 +101,13 @@ private:
     int midDWSP; // Represents the amount of samples skipped by the processor for every tick on the mid band
     int highDWSP; // Represents the amount of samples skipped by the processor for every tick on the high band
 
-    int bitDepth;
-    float levels;
+    float lowBitDepth;
+    float midBitDepth;
+    float highBitDepth;
+
+    float lowLevels;
+    float midLevels;
+    float highLevels;
 
     float linearGainLow;
     float linearGainMid;

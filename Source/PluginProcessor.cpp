@@ -194,14 +194,19 @@ void BrianTPFinalDigitalHellAudioProcessor::processBlock(juce::AudioBuffer<float
 
                 }
 
+                lowCurrentSampL = std::round(lowCurrentSampL * lowLevels) / lowLevels;
+                lowCurrentSampR = std::round(lowCurrentSampR * lowLevels) / lowLevels;
+
                 lowChannelDataL[samp] = tickSampleData(lowCurrentSampL, &mLowHPFilterL, &mLowLPFilterL) * linearGainLow;
                 lowChannelDataR[samp] = tickSampleData(lowCurrentSampR, &mLowHPFilterR, &mLowLPFilterR) * linearGainLow;
+
+                
 
                 if (lowSampleCounter == lowDWSP) lowSampleCounter = -1;
 
                 lowSampleCounter++;
 
-            }     
+            }
 
         }
 
@@ -229,6 +234,9 @@ void BrianTPFinalDigitalHellAudioProcessor::processBlock(juce::AudioBuffer<float
                     midCurrentSampR = channelDataRight[samp];
 
                 }
+
+                midCurrentSampL = std::round(midCurrentSampL * midLevels) / midLevels;
+                midCurrentSampR = std::round(midCurrentSampR * midLevels) / midLevels;
 
                 midChannelDataL[samp] = tickSampleData(midCurrentSampL, &mMidHPFilterL, &mMidLPFilterL) * linearGainMid;
                 midChannelDataR[samp] = tickSampleData(midCurrentSampR, &mMidHPFilterR, &mMidLPFilterR) * linearGainMid;
@@ -267,6 +275,9 @@ void BrianTPFinalDigitalHellAudioProcessor::processBlock(juce::AudioBuffer<float
 
                 }
 
+                highCurrentSampL = std::round(highCurrentSampL * highLevels) / highLevels;
+                highCurrentSampR = std::round(highCurrentSampR * highLevels) / highLevels;
+
                 highChannelDataL[samp] = tickSampleData(highCurrentSampL, &mHighHPFilterL, &mHighLPFilterL) * linearGainHigh;
                 highChannelDataR[samp] = tickSampleData(highCurrentSampR, &mHighHPFilterR, &mHighLPFilterR) * linearGainHigh;
 
@@ -291,9 +302,6 @@ void BrianTPFinalDigitalHellAudioProcessor::processBlock(juce::AudioBuffer<float
         channelDataLeft[samp] = lowChannelDataL[samp] + midChannelDataL[samp] + highChannelDataL[samp];
         channelDataRight[samp] = lowChannelDataR[samp] + midChannelDataR[samp] + highChannelDataR[samp];
 
-        channelDataLeft[samp] = std::round(channelDataLeft[samp] * levels) / levels;
-        channelDataRight[samp] = std::round(channelDataRight[samp] * levels) / levels;
-
         }
 
 }
@@ -308,8 +316,8 @@ int BrianTPFinalDigitalHellAudioProcessor::calcDWSP(float rawValue) {
     return output;
 }
 
-float BrianTPFinalDigitalHellAudioProcessor::calcBitDepth(float rawValue) {
-    float output = maxBitDepth - (maxBitDepth * (rawValue / 100)) + 1;
+int BrianTPFinalDigitalHellAudioProcessor::calcBitDepth(float rawValue) {
+    int output = static_cast<int> (maxBitDepth - (maxBitDepth * (rawValue / 100)) + 1);
     return output;
 }
 
@@ -372,9 +380,17 @@ void BrianTPFinalDigitalHellAudioProcessor::calcAlgorithmParams() {
     midDWSP = calcDWSP(rawMidDWSP);
     highDWSP = calcDWSP(rawHiDWSP);
 
-    int rawBitDepth = *parameters.getRawParameterValue("BitDepth");
-    bitDepth = calcBitDepth(rawBitDepth);
-    levels = pow(2.0f, bitDepth - 1);
+    int rawLowBitDepth = *parameters.getRawParameterValue("LoBitDepth");
+    lowBitDepth = calcBitDepth(rawLowBitDepth);
+    lowLevels = pow(2.0f, lowBitDepth - 1);
+
+    int rawMidBitDepth = *parameters.getRawParameterValue("MidBitDepth");
+    midBitDepth = calcBitDepth(rawMidBitDepth);
+    midLevels = pow(2.0f, midBitDepth - 1);
+
+    int rawHighBitDepth = *parameters.getRawParameterValue("HiBitDepth");
+    highBitDepth = calcBitDepth(rawHighBitDepth);
+    highLevels = pow(2.0f, highBitDepth - 1);
 
     lowEnabled = *parameters.getRawParameterValue("LoEnable");
     midEnabled = *parameters.getRawParameterValue("MidEnable");
@@ -616,8 +632,34 @@ AudioProcessorValueTreeState::ParameterLayout BrianTPFinalDigitalHellAudioProces
     // ========== BIT DEPTH ===============
 
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        "BitDepth",
-        "Bit Depth",
+        "LoBitDepth",
+        "Low Bit Depth",
+        juce::NormalisableRange<float>(0.0f, 100.0f),
+        20.0f,
+        " %", // Suffix
+        juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)
+        [](float value, int) {                      // Lambda for displaying value
+            return juce::String(static_cast<int>(value));
+        },
+        nullptr
+    ));
+
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        "MidBitDepth",
+        "Mid Bit Depth",
+        juce::NormalisableRange<float>(0.0f, 100.0f),
+        20.0f,
+        " %", // Suffix
+        juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)
+        [](float value, int) {                      // Lambda for displaying value
+            return juce::String(static_cast<int>(value));
+        },
+        nullptr
+    ));
+
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        "HiBitDepth",
+        "High Bit Depth",
         juce::NormalisableRange<float>(0.0f, 100.0f),
         20.0f,
         " %", // Suffix
