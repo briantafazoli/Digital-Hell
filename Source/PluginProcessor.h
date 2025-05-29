@@ -76,12 +76,12 @@ private:
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(BrianTPFinalDigitalHellAudioProcessor)
 
-    stk::BiQuad mLowHPFilter;
-    stk::BiQuad mLowLPFilter;
-    stk::BiQuad mMidHPFilter;
-    stk::BiQuad mMidLPFilter;
-    stk::BiQuad mHighHPFilter;
-    stk::BiQuad mHighLPFilter;
+    stk::BiQuad mLowHPFilterL; stk::BiQuad mLowHPFilterR;
+    stk::BiQuad mLowLPFilterL; stk::BiQuad mLowLPFilterR;
+    stk::BiQuad mMidHPFilterL; stk::BiQuad mMidHPFilterR;
+    stk::BiQuad mMidLPFilterL; stk::BiQuad mMidLPFilterR;
+    stk::BiQuad mHighHPFilterL; stk::BiQuad mHighHPFilterR;
+    stk::BiQuad mHighLPFilterL; stk::BiQuad mHighLPFilterR;
 
     AudioParameterFloat* mLowHPFCutoffFreqParam; // Dictates the highpass frequency for the low band
     AudioParameterFloat* mLowLPFCutoffFreqParam; // Dictates the lowpass frequency for the low band and the highpass frequency for the middle band

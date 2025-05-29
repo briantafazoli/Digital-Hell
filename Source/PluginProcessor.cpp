@@ -150,6 +150,9 @@ void BrianTPFinalDigitalHellAudioProcessor::processBlock(juce::AudioBuffer<float
 
     int numSamples = buffer.getNumSamples();
 
+    DBG("Channels: " + String(buffer.getNumChannels()));
+    DBG("Samples per block: " + String(buffer.getNumSamples()));
+
     float* lowChannelDataL = new float[numSamples];
     float* lowChannelDataR = new float[numSamples];
     float* midChannelDataL = new float[numSamples];
@@ -174,10 +177,12 @@ void BrianTPFinalDigitalHellAudioProcessor::processBlock(juce::AudioBuffer<float
         if (lowEnabled) {
 
             if (lowDWSP == 0) {
+
                 // No downsampling: process every sample directly
                 // Without this block of code, it will still downsample slightly.
-                lowChannelDataL[samp] = tickSampleData(channelDataLeft[samp], &mLowHPFilter, &mLowLPFilter) * linearGainLow;
-                lowChannelDataR[samp] = tickSampleData(channelDataRight[samp], &mLowHPFilter, &mLowLPFilter) * linearGainLow;
+                lowChannelDataL[samp] = tickSampleData(channelDataLeft[samp], &mLowHPFilterL, &mLowLPFilterL) * linearGainLow;
+                lowChannelDataR[samp] = tickSampleData(channelDataRight[samp], &mLowHPFilterR, &mLowLPFilterR) * linearGainLow;
+
             }
 
             else {
@@ -189,8 +194,8 @@ void BrianTPFinalDigitalHellAudioProcessor::processBlock(juce::AudioBuffer<float
 
                 }
 
-                lowChannelDataL[samp] = tickSampleData(lowCurrentSampL, &mLowHPFilter, &mLowLPFilter) * linearGainLow;
-                lowChannelDataR[samp] = tickSampleData(lowCurrentSampR, &mLowHPFilter, &mLowLPFilter) * linearGainLow;
+                lowChannelDataL[samp] = tickSampleData(lowCurrentSampL, &mLowHPFilterL, &mLowLPFilterL) * linearGainLow;
+                lowChannelDataR[samp] = tickSampleData(lowCurrentSampR, &mLowHPFilterR, &mLowLPFilterR) * linearGainLow;
 
                 if (lowSampleCounter == lowDWSP) lowSampleCounter = -1;
 
@@ -212,8 +217,8 @@ void BrianTPFinalDigitalHellAudioProcessor::processBlock(juce::AudioBuffer<float
             if (midDWSP == 0) {
                 // No downsampling: process every sample directly
                 // Without this block of code, it will still downsample slightly.
-                midChannelDataL[samp] = tickSampleData(channelDataLeft[samp], &mMidHPFilter, &mMidLPFilter) * linearGainMid;
-                midChannelDataR[samp] = tickSampleData(channelDataRight[samp], &mMidHPFilter, &mMidLPFilter) * linearGainMid;
+                midChannelDataL[samp] = tickSampleData(channelDataLeft[samp], &mMidHPFilterL, &mMidLPFilterL) * linearGainMid;
+                midChannelDataR[samp] = tickSampleData(channelDataRight[samp], &mMidHPFilterR, &mMidLPFilterR) * linearGainMid;
             }
 
             else {
@@ -225,8 +230,8 @@ void BrianTPFinalDigitalHellAudioProcessor::processBlock(juce::AudioBuffer<float
 
                 }
 
-                midChannelDataL[samp] = tickSampleData(midCurrentSampL, &mMidHPFilter, &mMidLPFilter) * linearGainMid;
-                midChannelDataR[samp] = tickSampleData(midCurrentSampR, &mMidHPFilter, &mMidLPFilter) * linearGainMid;
+                midChannelDataL[samp] = tickSampleData(midCurrentSampL, &mMidHPFilterL, &mMidLPFilterL) * linearGainMid;
+                midChannelDataR[samp] = tickSampleData(midCurrentSampR, &mMidHPFilterR, &mMidLPFilterR) * linearGainMid;
 
                 if (midSampleCounter == midDWSP) midSampleCounter = -1;
 
@@ -249,8 +254,8 @@ void BrianTPFinalDigitalHellAudioProcessor::processBlock(juce::AudioBuffer<float
             if (highDWSP == 0) {
                 // No downsampling: process every sample directly
                 // Without this block of code, it will still downsample slightly.
-                highChannelDataL[samp] = tickSampleData(channelDataLeft[samp], &mHighHPFilter, &mHighLPFilter) * linearGainHigh;
-                highChannelDataR[samp] = tickSampleData(channelDataRight[samp], &mHighHPFilter, &mHighLPFilter) * linearGainHigh;
+                highChannelDataL[samp] = tickSampleData(channelDataLeft[samp], &mHighHPFilterL, &mHighLPFilterL) * linearGainHigh;
+                highChannelDataR[samp] = tickSampleData(channelDataRight[samp], &mHighHPFilterR, &mHighLPFilterR) * linearGainHigh;
             }
 
             else {
@@ -262,8 +267,8 @@ void BrianTPFinalDigitalHellAudioProcessor::processBlock(juce::AudioBuffer<float
 
                 }
 
-                highChannelDataL[samp] = tickSampleData(highCurrentSampL, &mHighHPFilter, &mHighLPFilter) * linearGainHigh;
-                highChannelDataR[samp] = tickSampleData(highCurrentSampR, &mHighHPFilter, &mHighLPFilter) * linearGainHigh;
+                highChannelDataL[samp] = tickSampleData(highCurrentSampL, &mHighHPFilterL, &mHighLPFilterL) * linearGainHigh;
+                highChannelDataR[samp] = tickSampleData(highCurrentSampR, &mHighHPFilterR, &mHighLPFilterR) * linearGainHigh;
 
                 if (highSampleCounter == highDWSP) highSampleCounter = -1;
 
@@ -288,13 +293,6 @@ void BrianTPFinalDigitalHellAudioProcessor::processBlock(juce::AudioBuffer<float
 
         }
 
-        /*delete[] lowChannelDataL;
-        delete[] lowChannelDataR;
-        delete[] midChannelDataL;
-        delete[] midChannelDataR;
-        delete[] highChannelDataL;
-        delete[] highChannelDataR;*/
-
 }
 
 float calcLinearGain(float rawValue) {
@@ -303,7 +301,7 @@ float calcLinearGain(float rawValue) {
 }
 
 int calcDWSP(float rawValue, int maxDWSP) {
-    int output = static_cast<int> (rawValue + (maxDWSP - 1.0f) / 100.0f);
+    int output = static_cast<int> (rawValue + (maxDWSP - 1.0f) / 100.0f) - 1;
     return output;
 }
 
@@ -343,14 +341,20 @@ void BrianTPFinalDigitalHellAudioProcessor::calcAlgorithmParams() {
     float hiLPFCoeffs[5];
     Mu45FilterCalc::calcCoeffsLPF(hiLPFCoeffs, hiLPFc, Q, mFs);
 
-    mLowHPFilter.setCoefficients(loHPFCoeffs[0], loHPFCoeffs[1], loHPFCoeffs[2], loHPFCoeffs[3], loHPFCoeffs[4]);
-    mLowLPFilter.setCoefficients(loLPFCoeffs[0], loLPFCoeffs[1], loLPFCoeffs[2], loLPFCoeffs[3], loLPFCoeffs[4]);
+    mLowHPFilterL.setCoefficients(loHPFCoeffs[0], loHPFCoeffs[1], loHPFCoeffs[2], loHPFCoeffs[3], loHPFCoeffs[4]);
+    mLowHPFilterR.setCoefficients(loHPFCoeffs[0], loHPFCoeffs[1], loHPFCoeffs[2], loHPFCoeffs[3], loHPFCoeffs[4]);
+    mLowLPFilterL.setCoefficients(loLPFCoeffs[0], loLPFCoeffs[1], loLPFCoeffs[2], loLPFCoeffs[3], loLPFCoeffs[4]);
+    mLowLPFilterR.setCoefficients(loLPFCoeffs[0], loLPFCoeffs[1], loLPFCoeffs[2], loLPFCoeffs[3], loLPFCoeffs[4]);
 
-    mMidHPFilter.setCoefficients(midHPFCoeffs[0], midHPFCoeffs[1], midHPFCoeffs[2], midHPFCoeffs[3], midHPFCoeffs[4]);
-    mMidLPFilter.setCoefficients(midLPFCoeffs[0], midLPFCoeffs[1], midLPFCoeffs[2], midLPFCoeffs[3], midLPFCoeffs[4]);
+    mMidHPFilterL.setCoefficients(midHPFCoeffs[0], midHPFCoeffs[1], midHPFCoeffs[2], midHPFCoeffs[3], midHPFCoeffs[4]);
+    mMidHPFilterR.setCoefficients(midHPFCoeffs[0], midHPFCoeffs[1], midHPFCoeffs[2], midHPFCoeffs[3], midHPFCoeffs[4]);
+    mMidLPFilterL.setCoefficients(midLPFCoeffs[0], midLPFCoeffs[1], midLPFCoeffs[2], midLPFCoeffs[3], midLPFCoeffs[4]);
+    mMidLPFilterR.setCoefficients(midLPFCoeffs[0], midLPFCoeffs[1], midLPFCoeffs[2], midLPFCoeffs[3], midLPFCoeffs[4]);
 
-    mHighHPFilter.setCoefficients(hiHPFCoeffs[0], hiHPFCoeffs[1], hiHPFCoeffs[2], hiHPFCoeffs[3], hiHPFCoeffs[4]);
-    mHighLPFilter.setCoefficients(hiLPFCoeffs[0], hiLPFCoeffs[1], hiLPFCoeffs[2], hiLPFCoeffs[3], hiLPFCoeffs[4]);
+    mHighHPFilterL.setCoefficients(hiHPFCoeffs[0], hiHPFCoeffs[1], hiHPFCoeffs[2], hiHPFCoeffs[3], hiHPFCoeffs[4]);
+    mHighHPFilterR.setCoefficients(hiHPFCoeffs[0], hiHPFCoeffs[1], hiHPFCoeffs[2], hiHPFCoeffs[3], hiHPFCoeffs[4]);
+    mHighLPFilterL.setCoefficients(hiLPFCoeffs[0], hiLPFCoeffs[1], hiLPFCoeffs[2], hiLPFCoeffs[3], hiLPFCoeffs[4]);
+    mHighLPFilterR.setCoefficients(hiLPFCoeffs[0], hiLPFCoeffs[1], hiLPFCoeffs[2], hiLPFCoeffs[3], hiLPFCoeffs[4]);
 
     float rawLoDWSP = *parameters.getRawParameterValue("LoDWSP");
     float rawMidDWSP = *parameters.getRawParameterValue("MidDWSP");
