@@ -35,7 +35,7 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
     mLowHPFcSlider.setDoubleClickReturnValue(true, 50);
     addAndMakeVisible(mLowHPFcSlider);
 
-    lowHPFcAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+    mLowHPFcAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
         audioProcessor.getAPVTS(), "LoHPFCutoffFreq", mLowHPFcSlider);
 
     // LOW LPF, MID HPF FREQUENCY
@@ -53,7 +53,7 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
     mLowLPMidHPFcSlider.setDoubleClickReturnValue(true, 500);
     addAndMakeVisible(mLowLPMidHPFcSlider);
 
-    lowLPMidHPFcAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+    mLowLPMidHPFcAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
         audioProcessor.getAPVTS(), "LoLPFCutoffFreq", mLowLPMidHPFcSlider);
 
     // MID LPF, HIGH HPF FREQUENCY
@@ -71,7 +71,7 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
     mMidLPHighHPFcSlider.setDoubleClickReturnValue(true, 5000);
     addAndMakeVisible(mMidLPHighHPFcSlider);
 
-    midLPHighHPFcAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+    mMidLPHighHPFcAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
         audioProcessor.getAPVTS(), "HiHPFCutoffFreq", mMidLPHighHPFcSlider);
 
     // HIGH LPF FREQUENCY
@@ -89,7 +89,7 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
     mHighLPFcSlider.setDoubleClickReturnValue(true, 12000);
     addAndMakeVisible(mHighLPFcSlider);
 
-    highLPFcAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+    mHighLPFcAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
         audioProcessor.getAPVTS(), "HiLPFCutoffFreq", mHighLPFcSlider);
 
     // LOW DWSP
@@ -106,7 +106,7 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
     mLowDWSPSlider.setDoubleClickReturnValue(true, 20);
     addAndMakeVisible(mLowDWSPSlider);
 
-    lowDWSPAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+    mLowDWSPAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
         audioProcessor.getAPVTS(), "LoDWSP", mLowDWSPSlider);
 
     // MID DWSP
@@ -123,7 +123,7 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
     mMidDWSPSlider.setDoubleClickReturnValue(true, 20);
     addAndMakeVisible(mMidDWSPSlider);
 
-    midDWSPAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+    mMidDWSPAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
         audioProcessor.getAPVTS(), "MidDWSP", mMidDWSPSlider);
     
     // HIGH DWSP
@@ -140,7 +140,7 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
     mHighDWSPSlider.setDoubleClickReturnValue(true, 20);
     addAndMakeVisible(mHighDWSPSlider);
 
-    highDWSPAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+    mHighDWSPAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
         audioProcessor.getAPVTS(), "HiDWSP", mHighDWSPSlider);
 
     // LOW GAIN
@@ -158,7 +158,7 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
     mLowDBSlider.setDoubleClickReturnValue(true, 0);
     addAndMakeVisible(mLowDBSlider);
 
-    lowDBAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+    mLowDBAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
         audioProcessor.getAPVTS(), "LoGain", mLowDBSlider);
 
     // MID GAIN
@@ -176,7 +176,7 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
     mMidDBSlider.setDoubleClickReturnValue(true, 0);
     addAndMakeVisible(mMidDBSlider);
 
-    midDBAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+    mMidDBAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
         audioProcessor.getAPVTS(), "MidGain", mMidDBSlider);
 
     // HIGH GAIN
@@ -194,8 +194,59 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
     mHighDBSlider.setDoubleClickReturnValue(true, 0);
     addAndMakeVisible(mHighDBSlider);
 
-    highDBAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+    mHighDBAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
         audioProcessor.getAPVTS(), "HiGain", mHighDBSlider);
+
+    // LOW CRUSH
+
+    auto* lowCrushParam = audioProcessor.getAPVTS().getParameter("LoBitDepth");
+    if (auto* floatParam = dynamic_cast<juce::AudioParameterFloat*>(lowCrushParam))
+    {
+        mLowCrushSlider.setRange(floatParam->range.start, floatParam->range.end);
+    }
+
+    mLowCrushSlider.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+    mLowCrushSlider.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 40, 25);
+    mLowCrushSlider.setTextValueSuffix(" %");
+    mLowCrushSlider.setDoubleClickReturnValue(true, 20);
+    addAndMakeVisible(mLowCrushSlider);
+
+    mLowCrushAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+        audioProcessor.getAPVTS(), "HiDWSP", mLowCrushSlider);
+
+    // MID CRUSH
+
+    auto* midCrushParam = audioProcessor.getAPVTS().getParameter("MidBitDepth");
+    if (auto* floatParam = dynamic_cast<juce::AudioParameterFloat*>(midCrushParam))
+    {
+        mMidCrushSlider.setRange(floatParam->range.start, floatParam->range.end);
+    }
+
+    mMidCrushSlider.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+    mMidCrushSlider.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 40, 25);
+    mMidCrushSlider.setTextValueSuffix(" %");
+    mMidCrushSlider.setDoubleClickReturnValue(true, 20);
+    addAndMakeVisible(mMidCrushSlider);
+
+    mMidCrushAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+        audioProcessor.getAPVTS(), "HiDWSP", mHighCrushSlider);
+
+    // HIGH CRUSH
+
+    auto* highCrushParam = audioProcessor.getAPVTS().getParameter("HighBitDepth");
+    if (auto* floatParam = dynamic_cast<juce::AudioParameterFloat*>(highCrushParam))
+    {
+        mHighCrushSlider.setRange(floatParam->range.start, floatParam->range.end);
+    }
+
+    mHighCrushSlider.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+    mHighCrushSlider.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 40, 25);
+    mHighCrushSlider.setTextValueSuffix(" %");
+    mHighCrushSlider.setDoubleClickReturnValue(true, 20);
+    addAndMakeVisible(mHighCrushSlider);
+
+    mHighCrushAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+        audioProcessor.getAPVTS(), "HiDWSP", mHighCrushSlider);
 
     // LOW SOLO ENABLE
 

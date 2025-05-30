@@ -44,23 +44,31 @@ private:
     Slider mLowDBSlider;
     Slider mMidDBSlider;
     Slider mHighDBSlider;
+    
+    Slider mLowCrushSlider;
+    Slider mMidCrushSlider;
+    Slider mHighCrushSlider;
 
     ToggleButton mLowSoloEnable;
     ToggleButton mMidSoloEnable;
     ToggleButton mHighSoloEnable;
 
-    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> lowHPFcAttachment;
-    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> lowLPMidHPFcAttachment;
-    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> midLPHighHPFcAttachment;
-    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> highLPFcAttachment;
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mLowHPFcAttachment;
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mLowLPMidHPFcAttachment;
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mMidLPHighHPFcAttachment;
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mHighLPFcAttachment;
 
-    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> lowDWSPAttachment;
-    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> midDWSPAttachment;
-    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> highDWSPAttachment;
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mLowDWSPAttachment;
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mMidDWSPAttachment;
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mHighDWSPAttachment;
 
-    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> lowDBAttachment;
-    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> midDBAttachment;
-    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> highDBAttachment;
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mLowCrushAttachment;
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mMidCrushAttachment;
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mHighCrushAttachment;
+
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mLowDBAttachment;
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mMidDBAttachment;
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mHighDBAttachment;
 
     juce::Rectangle<int> getSquare(float centerX, float centerY, float sideLength) {
         // Calculate and return the rectangle
