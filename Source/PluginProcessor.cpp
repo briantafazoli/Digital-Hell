@@ -547,7 +547,48 @@ AudioProcessorValueTreeState::ParameterLayout BrianTPFinalDigitalHellAudioProces
         nullptr
         ));
 
-    // ========== BITCRUSH ==========
+    // ========== BIT DEPTH ===============
+
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        "LoBitDepth",
+        "Low Bit Depth",
+        juce::NormalisableRange<float>(0.0f, 100.0f),
+        20.0f,
+        " %", // Suffix
+        juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)
+        [](float value, int) {                      // Lambda for displaying value
+            return juce::String(static_cast<int>(value));
+        },
+        nullptr
+    ));
+
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        "MidBitDepth",
+        "Mid Bit Depth",
+        juce::NormalisableRange<float>(0.0f, 100.0f),
+        20.0f,
+        " %", // Suffix
+        juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)
+        [](float value, int) {                      // Lambda for displaying value
+            return juce::String(static_cast<int>(value));
+        },
+        nullptr
+    ));
+
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        "HiBitDepth",
+        "High Bit Depth",
+        juce::NormalisableRange<float>(0.0f, 100.0f),
+        20.0f,
+        " %", // Suffix
+        juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)
+        [](float value, int) {                      // Lambda for displaying value
+            return juce::String(static_cast<int>(value));
+        },
+        nullptr
+    ));
+
+    // ========== DOWNSAMPLE ==========
 
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         "LoDWSP", 
@@ -628,47 +669,6 @@ AudioProcessorValueTreeState::ParameterLayout BrianTPFinalDigitalHellAudioProces
         },
         nullptr
         ));
-
-    // ========== BIT DEPTH ===============
-
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        "LoBitDepth",
-        "Low Bit Depth",
-        juce::NormalisableRange<float>(0.0f, 100.0f),
-        20.0f,
-        " %", // Suffix
-        juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)
-        [](float value, int) {                      // Lambda for displaying value
-            return juce::String(static_cast<int>(value));
-        },
-        nullptr
-    ));
-
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        "MidBitDepth",
-        "Mid Bit Depth",
-        juce::NormalisableRange<float>(0.0f, 100.0f),
-        20.0f,
-        " %", // Suffix
-        juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)
-        [](float value, int) {                      // Lambda for displaying value
-            return juce::String(static_cast<int>(value));
-        },
-        nullptr
-    ));
-
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        "HiBitDepth",
-        "High Bit Depth",
-        juce::NormalisableRange<float>(0.0f, 100.0f),
-        20.0f,
-        " %", // Suffix
-        juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)
-        [](float value, int) {                      // Lambda for displaying value
-            return juce::String(static_cast<int>(value));
-        },
-        nullptr
-    ));
 
     // ========== ENABLE TOGGLES ==========
 

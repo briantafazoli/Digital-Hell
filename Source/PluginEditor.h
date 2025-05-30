@@ -37,6 +37,10 @@ private:
     Slider mMidLPHighHPFcSlider;
     Slider mHighLPFcSlider;
 
+    Slider mLowCrushSlider;
+    Slider mMidCrushSlider;
+    Slider mHighCrushSlider;
+
     Slider mLowDWSPSlider;
     Slider mMidDWSPSlider;
     Slider mHighDWSPSlider;
@@ -44,10 +48,6 @@ private:
     Slider mLowDBSlider;
     Slider mMidDBSlider;
     Slider mHighDBSlider;
-    
-    Slider mLowCrushSlider;
-    Slider mMidCrushSlider;
-    Slider mHighCrushSlider;
 
     ToggleButton mLowSoloEnable;
     ToggleButton mMidSoloEnable;
