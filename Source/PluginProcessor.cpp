@@ -176,7 +176,7 @@ void BrianTPFinalDigitalHellAudioProcessor::processBlock(juce::AudioBuffer<float
 
         if (lowEnabled) {
 
-            if (lowDWSP == 0) {
+            if (lowDWSP == 0 && lowBitDepth == maxBitDepth) {
 
                 // No downsampling: process every sample directly
                 // Without this block of code, it will still downsample slightly.
@@ -219,7 +219,7 @@ void BrianTPFinalDigitalHellAudioProcessor::processBlock(juce::AudioBuffer<float
 
         if (midEnabled) {
 
-            if (midDWSP == 0) {
+            if (midDWSP == 0 && midBitDepth == maxBitDepth) {
                 // No downsampling: process every sample directly
                 // Without this block of code, it will still downsample slightly.
                 midChannelDataL[samp] = tickSampleData(channelDataLeft[samp], &mMidHPFilterL, &mMidLPFilterL) * linearGainMid;
@@ -259,7 +259,7 @@ void BrianTPFinalDigitalHellAudioProcessor::processBlock(juce::AudioBuffer<float
 
         if (highEnabled) {
 
-            if (highDWSP == 0) {
+            if (highDWSP == 0 && highBitDepth == maxBitDepth) {
                 // No downsampling: process every sample directly
                 // Without this block of code, it will still downsample slightly.
                 highChannelDataL[samp] = tickSampleData(channelDataLeft[samp], &mHighHPFilterL, &mHighLPFilterL) * linearGainHigh;
