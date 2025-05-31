@@ -270,6 +270,18 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
     mHighSoloEnable.addListener(this);
     addAndMakeVisible(mHighSoloEnable);
 
+    // SAVE PRESET
+
+    mSavePresetButton.setButtonText("Save Preset");
+    mSavePresetButton.addListener(this);
+    addAndMakeVisible(mSavePresetButton);
+
+    // LOAD PRESET
+
+    mLoadPresetButton.setButtonText("Load Preset");
+    mLoadPresetButton.addListener(this);
+    addAndMakeVisible(mLoadPresetButton);
+
 }
 
 BrianTPFinalDigitalHellAudioProcessorEditor::~BrianTPFinalDigitalHellAudioProcessorEditor()
@@ -451,6 +463,9 @@ void BrianTPFinalDigitalHellAudioProcessorEditor::resized()
     mMidSoloEnable.setBounds(315, 550, 100, 50);
     mHighSoloEnable.setBounds(590, 550, 100, 50);
 
+    mSavePresetButton.setBounds(625, 30, 100, 50);
+    mLoadPresetButton.setBounds(725, 30, 100, 50);
+
 }
 
 void BrianTPFinalDigitalHellAudioProcessorEditor::sliderValueChanged(Slider* slider) {
@@ -529,11 +544,29 @@ void BrianTPFinalDigitalHellAudioProcessorEditor::buttonClicked(Button* button) 
         mHighSoloEnable.setToggleState(false, dontSendNotification);
     }
 
-    if (button == &mHighSoloEnable) {
+    else if (button == &mHighSoloEnable) {
         bool highSolo = mHighSoloEnable.getToggleStateValue().getValue();
         audioProcessor.soloHighBand(highSolo);
         mLowSoloEnable.setToggleState(false, dontSendNotification);
         mMidSoloEnable.setToggleState(false, dontSendNotification);
+    }
+
+    else if (button == &mSavePresetButton) {
+        FileChooser chooser("Save Preset", File::getSpecialLocation(File::userDocumentsDirectory), "*.preset");
+        if (chooser.browseForFileToSave(true))
+        {
+            audioProcessor.savePreset(chooser.getResult());
+        }
+    }
+
+    else if (button == &mLoadPresetButton) {
+
+        juce::FileChooser chooser("Load Preset", juce::File::getSpecialLocation(juce::File::userDocumentsDirectory), "*.preset");
+        if (chooser.browseForFileToOpen())
+        {
+            audioProcessor.loadPreset(chooser.getResult());
+        }
+
     }
 
 }

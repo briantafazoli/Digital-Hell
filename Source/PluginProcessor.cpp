@@ -499,6 +499,24 @@ void BrianTPFinalDigitalHellAudioProcessor::setStateInformation (const void* dat
             parameters.replaceState(juce::ValueTree::fromXml(*xmlState));
 }
 
+void BrianTPFinalDigitalHellAudioProcessor::savePreset(const File& file) {
+
+    MemoryBlock memBlock;
+    getStateInformation(memBlock); // This serializes the current state
+
+    file.replaceWithData(memBlock.getData(), memBlock.getSize());
+
+}
+
+void BrianTPFinalDigitalHellAudioProcessor::loadPreset(const File& file) {
+
+    MemoryBlock memBlock;
+    file.loadFileAsData(memBlock);
+
+    setStateInformation(memBlock.getData(), static_cast<int>(memBlock.getSize()));
+
+}
+
 AudioProcessorValueTreeState::ParameterLayout BrianTPFinalDigitalHellAudioProcessor::createParameterLayout()
 {
     std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;

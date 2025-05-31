@@ -55,6 +55,9 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
+    void savePreset(const File& file);
+    void loadPreset(const File& file);
+
     //==============================================================================
 
     void calcAlgorithmParams();
