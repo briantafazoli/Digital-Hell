@@ -2,7 +2,8 @@
 
 <JUCERPROJECT id="tyPH3U" name="BrianT-PFinal-DigitalHell" projectType="audioplug"
               useAppConfig="0" addUsingNamespaceToJuceHeader="1" displaySplashScreen="1"
-              jucerFormatVersion="1" pluginManufacturer="MUSI 4545" pluginManufacturerCode="Mu45">
+              jucerFormatVersion="1" pluginManufacturer="MUSI 4545" pluginManufacturerCode="Mu45"
+              defines="JUCE_MODAL_LOOPS_PERMITTED = 1">
   <MAINGROUP id="VUcS9S" name="BrianT-PFinal-DigitalHell">
     <GROUP id="{0DF1CDD5-7A16-2601-EF6D-20FB7B82817C}" name="Mu45FilterCalc">
       <FILE id="z37VFX" name="Mu45FilterCalc.cpp" compile="1" resource="0"

@@ -53,6 +53,9 @@ private:
     ToggleButton mMidSoloEnable;
     ToggleButton mHighSoloEnable;
 
+    TextButton mSavePresetButton{ "Save Preset" };
+    TextButton mLoadPresetButton{ "Load Preset" };
+
     std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mLowHPFcAttachment;
     std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mLowLPMidHPFcAttachment;
     std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mMidLPHighHPFcAttachment;
