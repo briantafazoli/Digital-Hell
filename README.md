@@ -4,6 +4,10 @@ This is a multiband bitcrusher plugin created by Brian Tafazoli. This plugin was
 
 ## Installing the Plugin
 
-Currently, this plugin is only available in VST3 format. To download it for usage in your DAW, download the file named "BrianT-PFinal-DigitalHell.vst3". Drag the file into the folder your DAW scans for VST3 presets. After that, your plugin should be good to go!
+Currently, this plugin is only available in VST3 format and Windows 10+ for 64-bit platforms. The MacOS version should be coming soon. 
+
+This code contains the full source and is completely free, as laid out in AGPLv3 licensing with JUCE 8. 
+
+To download it for usage in your DAW, download the file named "BrianT-PFinal-DigitalHell.vst3". Drag the file into the folder your DAW scans for VST3 presets. After that, your plugin should be good to go!
 
 If you have any questions or suggestions regarding the plugin, contact me at brian.tafazoli@gmail.com. 
