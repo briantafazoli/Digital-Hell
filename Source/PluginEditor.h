@@ -85,5 +85,19 @@ private:
 
     Image logo = ImageCache::getFromMemory(BinaryData::digitalHellLogo_png, BinaryData::digitalHellLogo_pngSize);
 
+    static const Font& get8BitFont()
+    {
+        static Font pixelOperator(Font(Typeface::createSystemTypefaceFor(BinaryData::PixelOperator_ttf,
+            BinaryData::PixelOperator_ttfSize)));
+        return pixelOperator;
+    }
+
+    static const Font& get8BitFont_Bold()
+    {
+        static Font pixelOperator(Font(Typeface::createSystemTypefaceFor(BinaryData::PixelOperatorBold_ttf,
+            BinaryData::PixelOperatorBold_ttfSize)));
+        return pixelOperator;
+    }
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BrianTPFinalDigitalHellAudioProcessorEditor)
 };

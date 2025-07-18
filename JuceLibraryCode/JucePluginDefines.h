@@ -41,22 +41,22 @@
  #define JucePlugin_Enable_ARA             0
 #endif
 #ifndef  JucePlugin_Name
- #define JucePlugin_Name                   "BrianT-PFinal-DigitalHell"
+ #define JucePlugin_Name                   "Digital Hell"
 #endif
 #ifndef  JucePlugin_Desc
- #define JucePlugin_Desc                   "BrianT-PFinal-DigitalHell"
+ #define JucePlugin_Desc                   "Multiband Bitcrusher Plugin"
 #endif
 #ifndef  JucePlugin_Manufacturer
- #define JucePlugin_Manufacturer           "MUSI 4545"
+ #define JucePlugin_Manufacturer           "Brian Tafazoli"
 #endif
 #ifndef  JucePlugin_ManufacturerWebsite
  #define JucePlugin_ManufacturerWebsite    "www.yourcompany.com"
 #endif
 #ifndef  JucePlugin_ManufacturerEmail
- #define JucePlugin_ManufacturerEmail      ""
+ #define JucePlugin_ManufacturerEmail      "brian.tafazoli@gmail.com"
 #endif
 #ifndef  JucePlugin_ManufacturerCode
- #define JucePlugin_ManufacturerCode       0x4d753435
+ #define JucePlugin_ManufacturerCode       0x5441465a
 #endif
 #ifndef  JucePlugin_PluginCode
  #define JucePlugin_PluginCode             0x54797068
@@ -101,19 +101,19 @@
  #define JucePlugin_AUSubType              JucePlugin_PluginCode
 #endif
 #ifndef  JucePlugin_AUExportPrefix
- #define JucePlugin_AUExportPrefix         BrianTPFinalDigitalHellAU
+ #define JucePlugin_AUExportPrefix         DigitalHellAU
 #endif
 #ifndef  JucePlugin_AUExportPrefixQuoted
- #define JucePlugin_AUExportPrefixQuoted   "BrianTPFinalDigitalHellAU"
+ #define JucePlugin_AUExportPrefixQuoted   "DigitalHellAU"
 #endif
 #ifndef  JucePlugin_AUManufacturerCode
  #define JucePlugin_AUManufacturerCode     JucePlugin_ManufacturerCode
 #endif
 #ifndef  JucePlugin_CFBundleIdentifier
- #define JucePlugin_CFBundleIdentifier     com.yourcompany.BrianTPFinalDigitalHell
+ #define JucePlugin_CFBundleIdentifier     com.yourcompany.DigitalHell
 #endif
 #ifndef  JucePlugin_AAXIdentifier
- #define JucePlugin_AAXIdentifier          com.yourcompany.BrianTPFinalDigitalHell
+ #define JucePlugin_AAXIdentifier          com.yourcompany.DigitalHell
 #endif
 #ifndef  JucePlugin_AAXManufacturerCode
  #define JucePlugin_AAXManufacturerCode    JucePlugin_ManufacturerCode
@@ -137,7 +137,7 @@
  #define JucePlugin_IAASubType             JucePlugin_PluginCode
 #endif
 #ifndef  JucePlugin_IAAName
- #define JucePlugin_IAAName                "MUSI 4545: BrianT-PFinal-DigitalHell"
+ #define JucePlugin_IAAName                "Brian Tafazoli: Digital Hell"
 #endif
 #ifndef  JucePlugin_VSTNumMidiInputs
  #define JucePlugin_VSTNumMidiInputs       16
@@ -152,10 +152,10 @@
  #define JucePlugin_ARATransformationFlags  0
 #endif
 #ifndef  JucePlugin_ARAFactoryID
- #define JucePlugin_ARAFactoryID           "com.yourcompany.BrianTPFinalDigitalHell.factory"
+ #define JucePlugin_ARAFactoryID           "com.yourcompany.DigitalHell.factory"
 #endif
 #ifndef  JucePlugin_ARADocumentArchiveID
- #define JucePlugin_ARADocumentArchiveID   "com.yourcompany.BrianTPFinalDigitalHell.aradocumentarchive.1.0.0"
+ #define JucePlugin_ARADocumentArchiveID   "com.yourcompany.DigitalHell.aradocumentarchive.1.0.0"
 #endif
 #ifndef  JucePlugin_ARACompatibleArchiveIDs
  #define JucePlugin_ARACompatibleArchiveIDs  ""

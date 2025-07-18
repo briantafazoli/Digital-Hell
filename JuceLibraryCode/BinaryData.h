@@ -11,8 +11,14 @@ namespace BinaryData
     extern const char*   digitalHellLogo_png;
     const int            digitalHellLogo_pngSize = 36663;
 
+    extern const char*   PixelOperatorBold_ttf;
+    const int            PixelOperatorBold_ttfSize = 16984;
+
+    extern const char*   PixelOperator_ttf;
+    const int            PixelOperator_ttfSize = 17272;
+
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 1;
+    const int namedResourceListSize = 3;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

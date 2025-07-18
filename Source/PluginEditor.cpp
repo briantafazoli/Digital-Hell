@@ -294,10 +294,11 @@ void BrianTPFinalDigitalHellAudioProcessorEditor::paint (juce::Graphics& g)
 
 
     // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
+    /*g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));*/
+    g.fillAll(Colours::black);
 
     g.setColour (Colours::lightgrey);
-    g.setFont(Font("Courier New", 25.0f, Font::bold));
+    g.setFont(get8BitFont_Bold().withHeight(25.0f));
 
     Rectangle<float> logoRectangle = Rectangle<float>::Rectangle(0, 0, 600, 100);
     g.drawImage(logo, logoRectangle);
@@ -330,15 +331,15 @@ void BrianTPFinalDigitalHellAudioProcessorEditor::paint (juce::Graphics& g)
     // CUTOFFS
 
     g.setColour(Colours::mediumpurple);
-    g.setFont(Font("Courier New", 35.0f, Font::plain));
+    g.setFont(get8BitFont().withHeight(35.0f));
 
-    juce::Rectangle<int> lowCutoffLabel = juce::Rectangle<int>::Rectangle(15, 150, 150, 100);
+    juce::Rectangle<int> lowCutoffLabel = juce::Rectangle<int>::Rectangle(15, 150, 200, 100);
     g.drawFittedText("Cutoff:", lowCutoffLabel, Justification::left, 1);
 
     /*juce::Rectangle<int> midCutoffLabel = juce::Rectangle<int>::Rectangle(315, 140, 100, 100);
     g.drawFittedText("Cutoff:", midCutoffLabel, Justification::left, 1);*/
 
-    juce::Rectangle<int> highCutoffLabel = juce::Rectangle<int>::Rectangle(590, 150, 150, 100);
+    juce::Rectangle<int> highCutoffLabel = juce::Rectangle<int>::Rectangle(590, 150, 200, 100);
     g.drawFittedText("Cutoff:", highCutoffLabel, Justification::left, 1);
 
     g.setColour(Colours::lightgrey);
@@ -383,7 +384,7 @@ void BrianTPFinalDigitalHellAudioProcessorEditor::paint (juce::Graphics& g)
     // DWSP
 
     g.setColour(Colours::mediumpurple);
-    g.setFont(Font("Courier New", 30.0f, Font::plain));
+    g.setFont(get8BitFont().withHeight(30.0f));
 
     Rectangle<int> lowDWSPLabel = Rectangle<int>::Rectangle(-25, 325, 300, 100);
     g.drawFittedText("Downsample:", lowDWSPLabel, Justification::centred, 1);
@@ -396,7 +397,7 @@ void BrianTPFinalDigitalHellAudioProcessorEditor::paint (juce::Graphics& g)
 
     // GAIN
 
-    g.setFont(Font("Courier New", 32.0f, Font::plain));
+    g.setFont(get8BitFont().withHeight(32.0f));
 
     Rectangle<int> lowGainLabel = Rectangle<int>::Rectangle(125, 525, 100, 100);
     g.drawFittedText("Gain:", lowGainLabel, Justification::left, 1);

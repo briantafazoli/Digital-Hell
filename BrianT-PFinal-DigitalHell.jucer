@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="tyPH3U" name="BrianT-PFinal-DigitalHell" projectType="audioplug"
-              useAppConfig="0" addUsingNamespaceToJuceHeader="1" displaySplashScreen="1"
-              jucerFormatVersion="1" pluginManufacturer="MUSI 4545" pluginManufacturerCode="Mu45"
-              defines="JUCE_MODAL_LOOPS_PERMITTED = 1">
-  <MAINGROUP id="VUcS9S" name="BrianT-PFinal-DigitalHell">
+<JUCERPROJECT id="tyPH3U" name="Digital Hell" projectType="audioplug" useAppConfig="0"
+              addUsingNamespaceToJuceHeader="1" displaySplashScreen="1" jucerFormatVersion="1"
+              pluginManufacturer="Brian Tafazoli" pluginManufacturerCode="TAFZ"
+              defines="JUCE_MODAL_LOOPS_PERMITTED = 1" version="1.0.0" companyEmail="brian.tafazoli@gmail.com"
+              pluginDesc="Multiband Bitcrusher Plugin">
+  <MAINGROUP id="VUcS9S" name="Digital Hell">
     <GROUP id="{0DF1CDD5-7A16-2601-EF6D-20FB7B82817C}" name="Mu45FilterCalc">
       <FILE id="z37VFX" name="Mu45FilterCalc.cpp" compile="1" resource="0"
             file="../../JUCE/modules/Mu45FilterCalc/Mu45FilterCalc.cpp"/>
@@ -57,6 +58,10 @@
         <FILE id="IruIBC" name="TwoZero.h" compile="0" resource="0" file="../../JUCE/modules/StkLite-4.6.2/StkLite-4.6.2/TwoZero.h"/>
       </GROUP>
     </GROUP>
+    <FILE id="XpPB7v" name="PixelOperator-Bold.ttf" compile="0" resource="1"
+          file="../../../Downloads/pixel_operator/PixelOperator-Bold.ttf"/>
+    <FILE id="tqS3KM" name="PixelOperator.ttf" compile="0" resource="1"
+          file="../../../Downloads/pixel_operator/PixelOperator.ttf"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>

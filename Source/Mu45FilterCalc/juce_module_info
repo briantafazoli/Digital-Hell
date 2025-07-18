@@ -1,0 +1,8 @@
+ID:             Mu45FilterCalc
+vendor:         yourname
+version:        1.0.0
+name:           Mu45 Filter Calculator
+description:    Filter coefficient calculators for audio filters
+website:        http://example.com
+license:        ISC
+dependencies:   juce_core
