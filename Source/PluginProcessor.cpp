@@ -670,7 +670,7 @@ AudioProcessorValueTreeState::ParameterLayout BrianTPFinalDigitalHellAudioProces
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         "LoGain", 
         "Low Band Gain",
-        juce::NormalisableRange<float>(-60.0f, 6.0f), 
+        juce::NormalisableRange<float>(-60.0f, 6.0f, 0.0f, 4.0f), 
         0.0f,
         " dB", // Suffix
         juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)
@@ -683,7 +683,7 @@ AudioProcessorValueTreeState::ParameterLayout BrianTPFinalDigitalHellAudioProces
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         "MidGain", 
         "Mid Band Gain",
-        juce::NormalisableRange<float>(-60.0f, 6.0f), 
+        juce::NormalisableRange<float>(-60.0f, 6.0f, 0.0f, 4.0f), 
         0.0f,
         " dB", // Suffix
         juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)
@@ -696,7 +696,7 @@ AudioProcessorValueTreeState::ParameterLayout BrianTPFinalDigitalHellAudioProces
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         "HiGain", 
         "High Band Gain",
-        juce::NormalisableRange<float>(-60.0f, 6.0f), 
+        juce::NormalisableRange<float>(-60.0f, 6.0f, 0.0f, 4.0f), 
         0.0f,
         " dB", // Suffix
         juce::AudioProcessorParameter::genericParameter, // Type (leave as generic)

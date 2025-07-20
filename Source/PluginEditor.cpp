@@ -157,7 +157,7 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
     if (auto* floatParam = dynamic_cast<juce::AudioParameterFloat*>(lowDBParam))
     {
         mLowDBSlider.setRange(floatParam->range.start, floatParam->range.end);
-        mLowDBSlider.setSkewFactorFromMidPoint(-10);
+        mLowDBSlider.setSkewFactorFromMidPoint(-6);
     }
 
     mLowDBSlider.setSliderStyle(juce::Slider::SliderStyle::LinearVertical);
@@ -175,7 +175,7 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
     if (auto* floatParam = dynamic_cast<juce::AudioParameterFloat*>(lowDBParam))
     {
         mMidDBSlider.setRange(floatParam->range.start, floatParam->range.end);
-        mMidDBSlider.setSkewFactorFromMidPoint(-10);
+        mMidDBSlider.setSkewFactorFromMidPoint(-6);
     }
 
     mMidDBSlider.setSliderStyle(juce::Slider::SliderStyle::LinearVertical);
@@ -193,9 +193,9 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
     if (auto* floatParam = dynamic_cast<juce::AudioParameterFloat*>(highDBParam))
     {
         mHighDBSlider.setRange(floatParam->range.start, floatParam->range.end);
-        mHighDBSlider.setSkewFactorFromMidPoint(-10);
+        
     }
-
+    mHighDBSlider.setSkewFactorFromMidPoint(-6);
     mHighDBSlider.setSliderStyle(juce::Slider::SliderStyle::LinearVertical);
     mHighDBSlider.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 50, 30);
     mHighDBSlider.setTextValueSuffix(" dB");
@@ -316,7 +316,7 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
     double defaultLowValue = defaultValues.getStart();
     double defaultHighValue = defaultValues.getEnd();
     mFrequencySlider.setMinAndMaxValues(defaultLowValue, defaultHighValue);
-    mFrequencySlider.setTextBoxStyle(Slider::TextBoxAbove, false, 50, 20);
+    mFrequencySlider.setTextBoxStyle(Slider::NoTextBox, false, 50, 20);
     mFrequencySlider.setColour(juce::Slider::trackColourId, juce::Colours::transparentBlack);
     mFrequencySlider.setColour(juce::Slider::backgroundColourId, juce::Colours::transparentBlack);
     addAndMakeVisible(mFrequencySlider);
