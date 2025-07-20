@@ -50,11 +50,14 @@ public:
         g.drawText ("FrequencySlider", getLocalBounds(),
                     juce::Justification::centred, true);   // draw some placeholder text
 
-        Rectangle outerWhiteRectangle = Rectangle(bounds.getX(), bounds.getY() + 27.5f, bounds.getWidth(), 20.0f);
+        Rectangle outerWhiteRectangle = Rectangle(bounds.getX(), bounds.getY() + 30.0f, bounds.getWidth(), 15.0f);
         g.drawRect(outerWhiteRectangle);
         g.fillRect(outerWhiteRectangle);
 
-        
+        Rectangle innerBlackRectangle = Rectangle(bounds.getX() + 3.0f, bounds.getY() + 33.75f, bounds.getWidth() - 6.0f, 7.5f);
+        g.setColour(Colours::black);
+        g.drawRect(innerBlackRectangle);
+        g.fillRect(innerBlackRectangle);
 
     }
 
