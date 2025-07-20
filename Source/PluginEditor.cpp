@@ -290,6 +290,10 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
     mLoadPresetButton.addListener(this);
     addAndMakeVisible(mLoadPresetButton);
 
+    // Frequency Slider 
+
+    addAndMakeVisible(frequencySlider);
+
 }
 
 BrianTPFinalDigitalHellAudioProcessorEditor::~BrianTPFinalDigitalHellAudioProcessorEditor()
@@ -420,9 +424,9 @@ void BrianTPFinalDigitalHellAudioProcessorEditor::paint (juce::Graphics& g)
     
     // OBJECTS
 
-    // DWSP KNOB
+    // FREQUENCY SLIDER TEST
 
-
+    
 
 }
 

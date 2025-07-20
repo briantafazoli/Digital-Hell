@@ -2874,6 +2874,7 @@
     <ClInclude Include="..\..\Source\Mu45FilterCalc\Mu45FilterCalc.h"/>
     <ClInclude Include="..\..\Source\PluginProcessor.h"/>
     <ClInclude Include="..\..\Source\PluginEditor.h"/>
+    <ClInclude Include="..\..\Source\FrequencySlider.h"/>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\StkLite-4.6.2\StkLite-4.6.2\BiQuad.h"/>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\StkLite-4.6.2\StkLite-4.6.2\Delay.h"/>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\StkLite-4.6.2\StkLite-4.6.2\DelayA.h"/>
@@ -2887,7 +2888,6 @@
     <ClInclude Include="..\..\..\..\..\JUCE\modules\StkLite-4.6.2\StkLite-4.6.2\PoleZero.h"/>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\StkLite-4.6.2\StkLite-4.6.2\Stk.h"/>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\StkLite-4.6.2\StkLite-4.6.2\TapDelay.h"/>
-    <ClInclude Include="..\..\Source\FrequencySlider.h"/>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\StkLite-4.6.2\StkLite-4.6.2\TwoPole.h"/>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\StkLite-4.6.2\StkLite-4.6.2\TwoZero.h"/>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\juce_animation\animation\juce_Animator.h"/>

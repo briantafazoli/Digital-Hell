@@ -3633,6 +3633,9 @@
     <ClInclude Include="..\..\Source\PluginEditor.h">
       <Filter>Digital Hell\Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\FrequencySlider.h">
+      <Filter>Digital Hell\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\StkLite-4.6.2\StkLite-4.6.2\BiQuad.h">
       <Filter>Digital Hell\StkLite-4.6.2\StkLite-4.6.2</Filter>
     </ClInclude>
@@ -3671,9 +3674,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\StkLite-4.6.2\StkLite-4.6.2\TapDelay.h">
       <Filter>Digital Hell\StkLite-4.6.2\StkLite-4.6.2</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\FrequencySlider.h">
-      <Filter>Digital Hell</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\StkLite-4.6.2\StkLite-4.6.2\TwoPole.h">
       <Filter>Digital Hell</Filter>

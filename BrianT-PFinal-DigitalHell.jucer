@@ -22,6 +22,8 @@
       <FILE id="OM2YRy" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
       <FILE id="dCJOAX" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+      <FILE id="VEXZJS" name="FrequencySlider.h" compile="0" resource="0"
+            file="Source/FrequencySlider.h"/>
     </GROUP>
     <GROUP id="{C8462065-02CF-23F5-E321-341115203F98}" name="StkLite-4.6.2">
       <GROUP id="{6CB7C523-9F24-7093-D736-837641181CFB}" name="__MACOSX">
@@ -54,8 +56,6 @@
         <FILE id="rVWpIa" name="TapDelay.h" compile="0" resource="0" file="../../../JUCE/modules/StkLite-4.6.2/StkLite-4.6.2/TapDelay.h"/>
       </GROUP>
     </GROUP>
-    <FILE id="VEXZJS" name="FrequencySlider.h" compile="0" resource="0"
-          file="Source/FrequencySlider.h"/>
     <FILE id="X2NBEI" name="TwoPole.cpp" compile="1" resource="0" file="../../../JUCE/modules/StkLite-4.6.2/StkLite-4.6.2/TwoPole.cpp"/>
     <FILE id="duwEEd" name="TwoPole.h" compile="0" resource="0" file="../../../JUCE/modules/StkLite-4.6.2/StkLite-4.6.2/TwoPole.h"/>
     <FILE id="p1AlQ6" name="TwoZero.cpp" compile="1" resource="0" file="../../../JUCE/modules/StkLite-4.6.2/StkLite-4.6.2/TwoZero.cpp"/>

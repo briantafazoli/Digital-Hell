@@ -56,6 +56,16 @@ public:
 
     }
 
+    void setRange(float minFreq, float maxFreq);
+    void setValues(float lowMidCutoff, float highMidCutoff);
+
 private:
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FrequencySlider)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(FrequencySlider)
+
+    float minFrequency = 20.0;
+    float maxFrequency = 20000.0;
+
+    float lowMidCutoff = 500.0;
+    float highMidCutoff = 5000.0;
+
 };

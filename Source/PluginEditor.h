@@ -18,6 +18,7 @@
 
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
+#include "FrequencySlider.h"
 
 //==============================================================================
 /**
@@ -44,6 +45,8 @@ private:
     Slider mLowLPMidHPFcSlider;
     Slider mMidLPHighHPFcSlider;
     Slider mHighLPFcSlider;
+
+    FrequencySlider frequencySlider;
 
     Slider mLowCrushSlider;
     Slider mMidCrushSlider;
