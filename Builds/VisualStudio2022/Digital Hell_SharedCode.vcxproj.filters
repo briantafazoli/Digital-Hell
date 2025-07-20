@@ -7628,6 +7628,12 @@
     <None Include="..\..\Source\digitalHellLogo.png">
       <Filter>Digital Hell\Source</Filter>
     </None>
+    <None Include="..\..\..\..\..\..\Downloads\pixel_operator\PixelOperator-Bold.ttf">
+      <Filter>Digital Hell</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\Downloads\pixel_operator\PixelOperator.ttf">
+      <Filter>Digital Hell</Filter>
+    </None>
     <None Include="..\..\..\..\..\JUCE\modules\juce_audio_devices\native\oboe\src\common\README.md">
       <Filter>JUCE Modules\juce_audio_devices\native\oboe\src\common</Filter>
     </None>

@@ -4207,6 +4207,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Source\digitalHellLogo.png"/>
+    <None Include="..\..\..\..\..\..\Downloads\pixel_operator\PixelOperator-Bold.ttf"/>
+    <None Include="..\..\..\..\..\..\Downloads\pixel_operator\PixelOperator.ttf"/>
     <None Include="..\..\..\..\..\JUCE\modules\juce_audio_devices\native\oboe\src\common\README.md"/>
     <None Include="..\..\..\..\..\JUCE\modules\juce_audio_devices\native\oboe\src\flowgraph\resampler\README.md"/>
     <None Include="..\..\..\..\..\JUCE\modules\juce_audio_devices\native\oboe\CMakeLists.txt"/>
