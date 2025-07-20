@@ -48,6 +48,9 @@ public:
         g.drawText ("FrequencySlider", getLocalBounds(),
                     juce::Justification::centred, true);   // draw some placeholder text
 
+        Rectangle<float> bounds = getLocalBounds().toFloat();
+        setBoundsWithinFile(bounds);
+
         Rectangle outerWhiteRectangle = Rectangle(bounds.getX(), bounds.getY() + 30.0f, bounds.getWidth(), 15.0f);
         g.drawRect(outerWhiteRectangle);
         g.fillRect(outerWhiteRectangle);
@@ -84,21 +87,33 @@ public:
 
     }
 
-    Range<float> getRange() {
-        return Range<float>(minFrequency, maxFrequency);
+    Range<double> getRange() {
+        return Range<double>(minFrequency, maxFrequency);
     }
 
-    Range<float> getDefaultValues() {
-        return Range<float>(lowMidCutoff, highMidCutoff);
+    Range<double> getDefaultValues() {
+        return Range<double>(lowMidCutoff, highMidCutoff);
     }
+
+    void setBoundsWithinFile(Rectangle<float> newBounds) {
+        bounds = newBounds;
+    }
+
+    Rectangle<float> getBounds() {
+        return bounds;
+    }
+
+    
 
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(FrequencySlider)
 
-    float minFrequency = 20.0;
-    float maxFrequency = 20000.0;
+    double minFrequency = 20.0;
+    double maxFrequency = 20000.0;
 
     float lowMidCutoff = 500.0;
     float highMidCutoff = 5000.0;
+
+    Rectangle<float> bounds;
 
 };

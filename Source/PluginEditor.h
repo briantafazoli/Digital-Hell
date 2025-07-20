@@ -95,6 +95,16 @@ private:
         );
     };
 
+    Rectangle<int> frequencyComponentPosition = Rectangle(50, 125, 765, 75);
+
+    Rectangle<int> getBoundsForFreqSlider() {
+        int x = frequencyComponentPosition.getX() + 8;
+        int y = frequencyComponentPosition.getY() + 2;
+        int width = frequencyComponentPosition.getWidth() - 15;
+        int height = 50;
+        return Rectangle(x, y, width, height);
+    }
+
     Image logo = ImageCache::getFromMemory(BinaryData::digitalHellLogo_png, BinaryData::digitalHellLogo_pngSize);
 
     static const Font& get8BitFont()
