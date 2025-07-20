@@ -481,7 +481,7 @@ void BrianTPFinalDigitalHellAudioProcessorEditor::resized()
 
     // Frequency Slider
 
-    frequencySlider.setBounds(300, 50, 100, 100);
+    frequencySlider.setBounds(50, 125, 765, 75);
 
 }
 

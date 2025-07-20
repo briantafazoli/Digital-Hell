@@ -43,10 +43,19 @@ public:
         g.setColour (juce::Colours::grey);
         g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
 
+        auto bounds = getLocalBounds().toFloat();
+
         g.setColour (juce::Colours::white);
         g.setFont (juce::FontOptions (14.0f));
         g.drawText ("FrequencySlider", getLocalBounds(),
                     juce::Justification::centred, true);   // draw some placeholder text
+
+        Rectangle outerWhiteRectangle = Rectangle(bounds.getX(), bounds.getY() + 27.5f, bounds.getWidth(), 20.0f);
+        g.drawRect(outerWhiteRectangle);
+        g.fillRect(outerWhiteRectangle);
+
+        
+
     }
 
     void resized() override
