@@ -479,6 +479,10 @@ void BrianTPFinalDigitalHellAudioProcessorEditor::resized()
     mSavePresetButton.setBounds(625, 30, 100, 50);
     mLoadPresetButton.setBounds(725, 30, 100, 50);
 
+    // Frequency Slider
+
+    frequencySlider.setBounds(300, 50, 100, 100);
+
 }
 
 void BrianTPFinalDigitalHellAudioProcessorEditor::sliderValueChanged(Slider* slider) {
