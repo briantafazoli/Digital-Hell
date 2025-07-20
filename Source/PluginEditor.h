@@ -46,7 +46,8 @@ private:
     Slider mMidLPHighHPFcSlider;
     Slider mHighLPFcSlider;
 
-    FrequencySlider frequencySlider;
+    FrequencySlider frequencySliderComponent;
+    Slider mFrequencySlider;
 
     Slider mLowCrushSlider;
     Slider mMidCrushSlider;

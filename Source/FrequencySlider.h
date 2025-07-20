@@ -41,7 +41,7 @@ public:
         //g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
 
         g.setColour (juce::Colours::grey);
-        g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
+        /*g.drawRect (getLocalBounds(), 1);*/   // draw an outline around the component
 
         auto bounds = getLocalBounds().toFloat();
 
@@ -86,8 +86,13 @@ public:
 
     }
 
-    void setRange(float minFreq, float maxFreq);
-    void setValues(float lowMidCutoff, float highMidCutoff);
+    Range<float> getRange() {
+        return Range<float>(minFrequency, maxFrequency);
+    }
+
+    Range<float> getDefaultValues() {
+        return Range<float>(lowMidCutoff, highMidCutoff);
+    }
 
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(FrequencySlider)

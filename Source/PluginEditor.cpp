@@ -292,7 +292,11 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
 
     // Frequency Slider 
 
-    addAndMakeVisible(frequencySlider);
+    addAndMakeVisible(frequencySliderComponent);
+
+    mFrequencySlider.setSliderStyle(Slider::SliderStyle::TwoValueHorizontal);
+    mFrequencySlider.setRange(20.0f, 20000.0f);
+
 
 }
 
