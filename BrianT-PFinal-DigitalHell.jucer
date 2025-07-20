@@ -54,6 +54,12 @@
         <FILE id="rVWpIa" name="TapDelay.h" compile="0" resource="0" file="../../../JUCE/modules/StkLite-4.6.2/StkLite-4.6.2/TapDelay.h"/>
       </GROUP>
     </GROUP>
+    <FILE id="pEUgOE" name="HalfBoldPixel7-2rw3.ttf" compile="0" resource="1"
+          file="../../../../Downloads/half-bold-pixel-7-font/HalfBoldPixel7-2rw3.ttf"/>
+    <FILE id="n7umRm" name="PixelOperator-Bold.ttf" compile="0" resource="1"
+          file="../../../../Downloads/pixel_operator/PixelOperator-Bold.ttf"/>
+    <FILE id="KLyghz" name="PixelOperator.ttf" compile="0" resource="1"
+          file="../../../../Downloads/pixel_operator/PixelOperator.ttf"/>
     <FILE id="X2NBEI" name="TwoPole.cpp" compile="1" resource="0" file="../../../JUCE/modules/StkLite-4.6.2/StkLite-4.6.2/TwoPole.cpp"/>
     <FILE id="duwEEd" name="TwoPole.h" compile="0" resource="0" file="../../../JUCE/modules/StkLite-4.6.2/StkLite-4.6.2/TwoPole.h"/>
     <FILE id="p1AlQ6" name="TwoZero.cpp" compile="1" resource="0" file="../../../JUCE/modules/StkLite-4.6.2/StkLite-4.6.2/TwoZero.cpp"/>

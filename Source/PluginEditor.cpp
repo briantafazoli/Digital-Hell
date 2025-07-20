@@ -378,7 +378,7 @@ void BrianTPFinalDigitalHellAudioProcessorEditor::paint (juce::Graphics& g)
     // BIT DEPTH
 
     g.setColour(Colours::mediumpurple);
-    g.setFont(Font("Courier New", 35.0f, Font::plain));
+    g.setFont(get8BitFont().withHeight(35.0f));
 
     Rectangle<int> lowCrushLabel = Rectangle<int>::Rectangle(5, 270, 130, 50);
     g.drawFittedText("Crush:", lowCrushLabel, Justification::centred, 1);

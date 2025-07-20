@@ -15,9 +15,9 @@ BEGIN
   BEGIN
     BLOCK "040904E4"
     BEGIN
-      VALUE "FileDescription",  "BrianT-PFinal-DigitalHell\0"
+      VALUE "FileDescription",  "Digital Hell\0"
       VALUE "FileVersion",  "1.0.0\0"
-      VALUE "ProductName",  "BrianT-PFinal-DigitalHell\0"
+      VALUE "ProductName",  "Digital Hell\0"
       VALUE "ProductVersion",  "1.0.0\0"
     END
   END
