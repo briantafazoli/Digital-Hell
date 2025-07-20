@@ -54,6 +54,8 @@
         <FILE id="rVWpIa" name="TapDelay.h" compile="0" resource="0" file="../../../JUCE/modules/StkLite-4.6.2/StkLite-4.6.2/TapDelay.h"/>
       </GROUP>
     </GROUP>
+    <FILE id="VEXZJS" name="FrequencySlider.h" compile="0" resource="0"
+          file="Source/FrequencySlider.h"/>
     <FILE id="X2NBEI" name="TwoPole.cpp" compile="1" resource="0" file="../../../JUCE/modules/StkLite-4.6.2/StkLite-4.6.2/TwoPole.cpp"/>
     <FILE id="duwEEd" name="TwoPole.h" compile="0" resource="0" file="../../../JUCE/modules/StkLite-4.6.2/StkLite-4.6.2/TwoPole.h"/>
     <FILE id="p1AlQ6" name="TwoZero.cpp" compile="1" resource="0" file="../../../JUCE/modules/StkLite-4.6.2/StkLite-4.6.2/TwoZero.cpp"/>
