@@ -317,7 +317,7 @@ void BrianTPFinalDigitalHellAudioProcessorEditor::paint (juce::Graphics& g)
     
     // DIVIDERS AND LARGE LABELS
 
-    Line<float> lowDividerVert(Point<float>(300, 100), Point<float>(300, 575));
+    /*Line<float> lowDividerVert(Point<float>(300, 100), Point<float>(300, 575));
     g.drawLine(lowDividerVert);
 
     Line<float> highDividerVert(Point<float>(575, 100), Point<float>(575, 575));
@@ -336,48 +336,48 @@ void BrianTPFinalDigitalHellAudioProcessorEditor::paint (juce::Graphics& g)
     g.drawFittedText("MID", midLabelRectangle, juce::Justification::centred, 1);
 
     juce::Rectangle<int> highLabelRectangle = juce::Rectangle<int>::Rectangle(575, 100, 300, 40);
-    g.drawFittedText("HIGH", highLabelRectangle, juce::Justification::centred, 1);
+    g.drawFittedText("HIGH", highLabelRectangle, juce::Justification::centred, 1);*/
 
     // SMALLER LABLES
 
     // CUTOFFS
 
-    g.setColour(Colours::mediumpurple);
-    g.setFont(get8BitFont().withHeight(35.0f));
+    //g.setColour(Colours::mediumpurple);
+    //g.setFont(get8BitFont().withHeight(35.0f));
 
-    juce::Rectangle<int> lowCutoffLabel = juce::Rectangle<int>::Rectangle(15, 150, 200, 100);
-    g.drawFittedText("Cutoff:", lowCutoffLabel, Justification::left, 1);
+    //juce::Rectangle<int> lowCutoffLabel = juce::Rectangle<int>::Rectangle(15, 150, 200, 100);
+    //g.drawFittedText("Cutoff:", lowCutoffLabel, Justification::left, 1);
 
-    /*juce::Rectangle<int> midCutoffLabel = juce::Rectangle<int>::Rectangle(315, 140, 100, 100);
-    g.drawFittedText("Cutoff:", midCutoffLabel, Justification::left, 1);*/
+    ///*juce::Rectangle<int> midCutoffLabel = juce::Rectangle<int>::Rectangle(315, 140, 100, 100);
+    //g.drawFittedText("Cutoff:", midCutoffLabel, Justification::left, 1);*/
 
-    juce::Rectangle<int> highCutoffLabel = juce::Rectangle<int>::Rectangle(590, 150, 200, 100);
-    g.drawFittedText("Cutoff:", highCutoffLabel, Justification::left, 1);
+    //juce::Rectangle<int> highCutoffLabel = juce::Rectangle<int>::Rectangle(590, 150, 200, 100);
+    //g.drawFittedText("Cutoff:", highCutoffLabel, Justification::left, 1);
 
-    g.setColour(Colours::lightgrey);
-    g.setFont(Font("Arial", 17.0f, Font::plain));
+    //g.setColour(Colours::lightgrey);
+    //g.setFont(Font("Arial", 17.0f, Font::plain));
 
-    // CUTOFF FILTER LABELS
+    //// CUTOFF FILTER LABELS
 
-    Rectangle<int> lowCutoffHPFLabel = Rectangle<int>::Rectangle(180, 200, 115, 50);
-    g.drawFittedText("Hi Pass", lowCutoffHPFLabel, Justification::centred, 1);
-    
-    Rectangle<int> midCutoffHPFLabel = Rectangle<int>::Rectangle(315, 200, 115, 50);
-    g.drawFittedText("Hi Pass", midCutoffHPFLabel, Justification::centred, 1);
+    //Rectangle<int> lowCutoffHPFLabel = Rectangle<int>::Rectangle(180, 200, 115, 50);
+    //g.drawFittedText("Hi Pass", lowCutoffHPFLabel, Justification::centred, 1);
+    //
+    //Rectangle<int> midCutoffHPFLabel = Rectangle<int>::Rectangle(315, 200, 115, 50);
+    //g.drawFittedText("Hi Pass", midCutoffHPFLabel, Justification::centred, 1);
 
-    Rectangle<int> midCutoffLPFLabel = Rectangle<int>::Rectangle(430, 200, 115, 50);
-    g.drawFittedText("Lo Pass", midCutoffLPFLabel, Justification::centred, 1);
+    //Rectangle<int> midCutoffLPFLabel = Rectangle<int>::Rectangle(430, 200, 115, 50);
+    //g.drawFittedText("Lo Pass", midCutoffLPFLabel, Justification::centred, 1);
 
-    Rectangle<int> highCutoffLPFLabel = Rectangle<int>::Rectangle(755, 200, 115, 50);
-    g.drawFittedText("Lo Pass", highCutoffLPFLabel, Justification::centred, 1);
+    //Rectangle<int> highCutoffLPFLabel = Rectangle<int>::Rectangle(755, 200, 115, 50);
+    //g.drawFittedText("Lo Pass", highCutoffLPFLabel, Justification::centred, 1);
 
-    g.setFont(Font("Arial", 11.0f, Font::plain));
+    //g.setFont(Font("Arial", 11.0f, Font::plain));
 
-    Rectangle<int> lowCutoffLPFLabel = Rectangle<int>::Rectangle(315, 215, 115, 50);
-    g.drawFittedText("+ Lo Pass (LOW)", lowCutoffLPFLabel, Justification::centred, 1);
+    //Rectangle<int> lowCutoffLPFLabel = Rectangle<int>::Rectangle(315, 215, 115, 50);
+    //g.drawFittedText("+ Lo Pass (LOW)", lowCutoffLPFLabel, Justification::centred, 1);
 
-    Rectangle<int> highCutoffHPFLabel = Rectangle<int>::Rectangle(430, 215, 115, 50);
-    g.drawFittedText("+ Hi Pass (HIGH)", highCutoffHPFLabel, Justification::centred, 1);
+    //Rectangle<int> highCutoffHPFLabel = Rectangle<int>::Rectangle(430, 215, 115, 50);
+    //g.drawFittedText("+ Hi Pass (HIGH)", highCutoffHPFLabel, Justification::centred, 1);
 
     // BIT DEPTH
 
@@ -437,10 +437,10 @@ void BrianTPFinalDigitalHellAudioProcessorEditor::resized()
 
     // FREQUENCIES
 
-    mLowHPFcSlider.setBounds(200, 140, 80, 80);
+    /*mLowHPFcSlider.setBounds(200, 140, 80, 80);
     mLowLPMidHPFcSlider.setBounds(335, 140, 80, 80);
     mMidLPHighHPFcSlider.setBounds(450, 140, 80, 80);
-    mHighLPFcSlider.setBounds(775, 140, 80, 80);
+    mHighLPFcSlider.setBounds(775, 140, 80, 80);*/
 
     // BIT DEPTH KNOBS
 
