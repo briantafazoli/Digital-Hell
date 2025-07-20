@@ -38,7 +38,7 @@ public:
            drawing code..
         */
 
-        g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
+        //g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
 
         g.setColour (juce::Colours::grey);
         g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
@@ -54,10 +54,28 @@ public:
         g.drawRect(outerWhiteRectangle);
         g.fillRect(outerWhiteRectangle);
 
-        Rectangle innerBlackRectangle = Rectangle(bounds.getX() + 3.0f, bounds.getY() + 33.75f, bounds.getWidth() - 6.0f, 7.5f);
+        Rectangle innerBlackRectangle = Rectangle(bounds.getX() + 7.5f, bounds.getY() + 33.75f, bounds.getWidth() - 15.0f, 7.5f);
         g.setColour(Colours::black);
         g.drawRect(innerBlackRectangle);
         g.fillRect(innerBlackRectangle);
+
+        // FAUX 8 BIT
+
+        Rectangle topLeftBlackSquare = Rectangle(bounds.getX(), bounds.getY() + 30.0f, 7.5f, 3.75f);
+        g.drawRect(topLeftBlackSquare);
+        g.fillRect(topLeftBlackSquare);
+
+        Rectangle topRightBlackSquare = Rectangle(bounds.getWidth() - 7.5f, bounds.getY() + 30.0f, 7.5f, 3.75f);
+        g.drawRect(topRightBlackSquare);
+        g.fillRect(topRightBlackSquare);
+
+        Rectangle bottomLeftBlackSquare = Rectangle(bounds.getX(), bounds.getY() + 41.25f, 7.5f, 3.75f);
+        g.drawRect(bottomLeftBlackSquare);
+        g.fillRect(bottomLeftBlackSquare);
+
+        Rectangle bottomRightBlackSquare = Rectangle(bounds.getWidth() - 7.5f, bounds.getY() + 41.25f, 7.5f, 3.75f);
+        g.drawRect(bottomRightBlackSquare);
+        g.fillRect(bottomRightBlackSquare);
 
     }
 
