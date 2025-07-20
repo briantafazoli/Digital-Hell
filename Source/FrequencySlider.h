@@ -43,8 +43,6 @@ public:
         g.setColour (juce::Colours::grey);
         /*g.drawRect (getLocalBounds(), 1);*/   // draw an outline around the component
 
-        auto bounds = getLocalBounds().toFloat();
-
         g.setColour (juce::Colours::white);
         g.setFont (juce::FontOptions (14.0f));
         g.drawText ("FrequencySlider", getLocalBounds(),
