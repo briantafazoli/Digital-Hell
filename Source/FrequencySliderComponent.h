@@ -27,6 +27,16 @@ public:
         mFrequencySlider.setLookAndFeel(frequencySliderLookandFeel.get());
         mFrequencySlider.setSliderStyle(Slider::SliderStyle::TwoValueHorizontal);
 
+        // Loading Images
+
+        redSlider = ImageCache::getFromMemory(BinaryData::red_slider_png, BinaryData::red_slider_pngSize);
+        DBG("Red Slider Loaded: " << (redSlider.isValid() ? "yes" : "no"));
+
+        blueSlider = ImageCache::getFromMemory(BinaryData::blue_slider_png, BinaryData::blue_slider_pngSize);
+        DBG("Blue Slider Loaded: " << (redSlider.isValid() ? "yes" : "no"));
+
+        // Default Values and Range
+
         Range<double> defaultValues = getDefaultValues();
         double defaultLowValue = defaultValues.getStart();
         double defaultHighValue = defaultValues.getEnd();
@@ -37,6 +47,8 @@ public:
         mFrequencySlider.setTextBoxStyle(Slider::NoTextBox, false, 50, 20);
         mFrequencySlider.setColour(juce::Slider::trackColourId, juce::Colours::transparentBlack);
         mFrequencySlider.setColour(juce::Slider::backgroundColourId, juce::Colours::transparentBlack);
+
+        // Sending Values to processor
 
         mFrequencySlider.onValueChange = [this]() {
             if (auto* loParam = dynamic_cast<juce::AudioParameterFloat*>(apvts.getParameter("LoLPFCutoffFreq")))
@@ -52,12 +64,6 @@ public:
 
         addAndMakeVisible(mFrequencySlider);
 
-        redSlider = ImageCache::getFromMemory(BinaryData::red_slider_png, BinaryData::red_slider_pngSize);
-        DBG("Red Slider Loaded: " << (redSlider.isValid() ? "yes" : "no"));
-
-        blueSlider = ImageCache::getFromMemory(BinaryData::blue_slider_png, BinaryData::blue_slider_pngSize);
-        DBG("Blue Slider Loaded: " << (redSlider.isValid() ? "yes" : "no"));
-
     }
 
     ~FrequencySliderComponent() override
@@ -70,20 +76,20 @@ public:
     void paint(Graphics& g) override {
 
         Rectangle<int> bounds = getLocalBounds();
-        g.setColour(Colours::white);
-        g.drawRect(bounds, 1.0f);
+        //g.setColour(Colours::white);
+        //g.drawRect(bounds, 1.0f);
 
         scaleImages();
 
         Rectangle<int> redSliderIndicator = Rectangle(bounds.getX(), bounds.getCentreY(), bounds.getWidth() / 2, 60);
         g.setColour(Colours::red);
-        g.drawRect(redSliderIndicator, 1.0f);
+        //g.drawRect(redSliderIndicator, 1.0f);
 
         g.drawImage(redSlider, redSliderIndicator.getX(), redSliderIndicator.getY(), sliderImageWidth, sliderImageHeight, 0.0f, 0.0f, redSlider.getWidth(), redSlider.getHeight());
 
         Rectangle<int> blueSliderIndicator = Rectangle(bounds.getWidth() / 2, bounds.getCentreY(), bounds.getWidth() / 2, 60);
         g.setColour(Colours::blue);
-        g.drawRect(blueSliderIndicator, 1.0f);
+        //g.drawRect(blueSliderIndicator, 1.0f);
 
         g.drawImage(blueSlider, blueSliderIndicator.getX(), blueSliderIndicator.getY(), sliderImageWidth, sliderImageHeight, 0.0f, 0.0f, redSlider.getWidth(), redSlider.getHeight());
 
@@ -91,10 +97,10 @@ public:
         g.setFont(get8BitFont().withHeight(20.0f));
 
         g.drawText("\t \t  determines the separation between the LOW", redSliderIndicator, Justification::topLeft);
-        g.drawText("and MID bands", redSliderIndicator, Justification::left);
+        g.drawText("and MID bands", redSliderIndicator, Justification::centred);
 
         g.drawText("\t \t  determines the separation between the MID", blueSliderIndicator, Justification::topLeft);
-        g.drawText("and HIGH bands", blueSliderIndicator, Justification::left);
+        g.drawText("and HIGH bands", blueSliderIndicator, Justification::centred);
 
     }
 

@@ -56,6 +56,8 @@ public:
         if (style == juce::Slider::TwoValueHorizontal || style == juce::Slider::ThreeValueHorizontal)
         {
 
+            // Draw Slider Images
+
             g.drawImage(redSlider,
                 minSliderPos - sliderImageWidth / 2.0f, bounds.getY() + 33.0f,
                 sliderImageWidth, sliderImageHeight,
@@ -65,6 +67,8 @@ public:
                 maxSliderPos - sliderImageWidth / 2.0f, bounds.getY() + 33.0f,
                 sliderImageWidth, sliderImageHeight,
                 0, 0, blueSlider.getWidth(), blueSlider.getHeight());
+
+            // Create text boxes for values
 
             int minValue = slider.getMinValue();
             int maxValue = slider.getMaxValue();
@@ -77,16 +81,16 @@ public:
                 70, 20
             };
             g.setColour(Colours::white);
-            g.drawRect(minLabel, 1.0f);
 
             g.drawFittedText(lowMidValue, minLabel, Justification::centred, 1);
 
             Rectangle <int> maxLabel = Rectangle<int>{
-                (int)minSliderPos - 35, (int)bounds.getY() + 5,
+                (int)maxSliderPos - 35, (int)bounds.getY() + 5,
                 70, 20
             };
             g.setColour(Colours::white);
-            g.drawRect(minLabel, 1.0f);
+
+            g.drawFittedText(midHighValue, maxLabel, Justification::centred, 1);
 
         }
 
@@ -99,30 +103,6 @@ public:
 
 
     }
-
-    /*Slider::SliderLayout getSliderLayout(Slider& slider) override {
-
-        Slider::SliderLayout layout;
-
-        auto bounds = slider.getLocalBounds();
-
-        const int textBoxWidth = 50;
-        const int textBoxHeight = 20;
-
-        int sliderPos = (int)slider.getPositionOfValue(slider.getValue());
-
-        layout.textBoxBounds = Rectangle<int>{
-            sliderPos - textBoxWidth / 2,
-            bounds.getCentreY() - 30,
-            textBoxWidth,
-            textBoxHeight
-        };
-
-        layout.sliderBounds = bounds;
-        
-        return layout;
-
-    }*/
 
     int getSliderThumbRadius(juce::Slider& slider) override
     {
