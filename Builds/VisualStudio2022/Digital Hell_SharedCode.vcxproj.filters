@@ -3729,6 +3729,9 @@
     <ClInclude Include="..\..\Source\FrequencySliderLookAndFeel.h">
       <Filter>Digital Hell\Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\TwoValueSliderAttachment.h">
+      <Filter>Digital Hell\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\PluginProcessor.h">
       <Filter>Digital Hell\Source</Filter>
     </ClInclude>

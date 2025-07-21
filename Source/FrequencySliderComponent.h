@@ -13,6 +13,7 @@
 #include <JuceHeader.h>
 #include "FrequencySliderLookAndFeel.h"
 #include "PluginEditor.h"
+#include "TwoValueSliderAttachment.h"
 
 //==============================================================================
 /*
@@ -50,17 +51,11 @@ public:
 
         // Sending Values to processor
 
-        mFrequencySlider.onValueChange = [this]() {
-            if (auto* loParam = dynamic_cast<juce::AudioParameterFloat*>(apvts.getParameter("LoLPFCutoffFreq")))
-            {
-                loParam->setValueNotifyingHost(loParam->convertTo0to1((float)mFrequencySlider.getMinValue()));
-            }
-
-            if (auto* hiParam = dynamic_cast<juce::AudioParameterFloat*>(apvts.getParameter("HiHPFCutoffFreq")))
-            {
-                hiParam->setValueNotifyingHost(hiParam->convertTo0to1((float)mFrequencySlider.getMaxValue()));
-            }
-            };
+        twoValueAttachment = std::make_unique<TwoValueSliderAttachment>(
+            apvts,
+            "LoLPFCutoffFreq",
+            "HiHPFCutoffFreq",
+            mFrequencySlider);
 
         addAndMakeVisible(mFrequencySlider);
 
@@ -167,5 +162,7 @@ private:
             BinaryData::PixelOperatorBold_ttfSize)));
         return pixelOperator;
     }
+
+    std::unique_ptr<TwoValueSliderAttachment> twoValueAttachment;
 
 };

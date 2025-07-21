@@ -64,6 +64,8 @@
             file="Source/FrequencySliderLookAndFeel.h"/>
       <FILE id="K5D5VK" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
+      <FILE id="QxKG4C" name="TwoValueSliderAttachment.h" compile="0" resource="0"
+            file="Source/TwoValueSliderAttachment.h"/>
       <FILE id="bRQOEX" name="PluginProcessor.h" compile="0" resource="0"
             file="Source/PluginProcessor.h"/>
       <FILE id="OM2YRy" name="PluginEditor.cpp" compile="1" resource="0"

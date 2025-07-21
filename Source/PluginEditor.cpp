@@ -46,42 +46,6 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
     mLowHPFcAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
         audioProcessor.getAPVTS(), "LoHPFCutoffFreq", mLowHPFcSlider);
 
-    // LOW LPF, MID HPF FREQUENCY
-
-    auto* lowLPFcParam = audioProcessor.getAPVTS().getParameter("LoLPFCutoffFreq");
-    if (auto* floatParam = dynamic_cast<juce::AudioParameterFloat*>(lowLPFcParam))
-    {
-        mLowLPMidHPFcSlider.setRange(floatParam->range.start, floatParam->range.end);
-        mLowLPMidHPFcSlider.setSkewFactorFromMidPoint(500);
-    }
-
-    mLowLPMidHPFcSlider.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
-    mLowLPMidHPFcSlider.setTextBoxStyle(juce::Slider::TextBoxAbove, false, 60, 20);
-    mLowLPMidHPFcSlider.setTextValueSuffix(" Hz");
-    mLowLPMidHPFcSlider.setDoubleClickReturnValue(true, 500);
-    addAndMakeVisible(mLowLPMidHPFcSlider);
-
-    mLowLPMidHPFcAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-        audioProcessor.getAPVTS(), "LoLPFCutoffFreq", mLowLPMidHPFcSlider);
-
-    // MID LPF, HIGH HPF FREQUENCY
-
-    auto* highHPFcParam = audioProcessor.getAPVTS().getParameter("HiHPFCutoffFreq");
-    if (auto* floatParam = dynamic_cast<juce::AudioParameterFloat*>(highHPFcParam))
-    {
-        mMidLPHighHPFcSlider.setRange(floatParam->range.start, floatParam->range.end);
-        mMidLPHighHPFcSlider.setSkewFactorFromMidPoint(5000);
-    }
-
-    mMidLPHighHPFcSlider.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
-    mMidLPHighHPFcSlider.setTextBoxStyle(juce::Slider::TextBoxAbove, false, 60, 20);
-    mMidLPHighHPFcSlider.setTextValueSuffix(" Hz");
-    mMidLPHighHPFcSlider.setDoubleClickReturnValue(true, 5000);
-    addAndMakeVisible(mMidLPHighHPFcSlider);
-
-    mMidLPHighHPFcAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-        audioProcessor.getAPVTS(), "HiHPFCutoffFreq", mMidLPHighHPFcSlider);
-
     // HIGH LPF FREQUENCY
 
     auto* highLPFcParam = audioProcessor.getAPVTS().getParameter("HiLPFCutoffFreq");
