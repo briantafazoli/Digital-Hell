@@ -4208,6 +4208,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Source\digitalHellLogo.png"/>
+    <None Include="..\..\Source\red slider.png"/>
     <None Include="..\..\..\..\..\..\Downloads\pixel_operator\PixelOperator-Bold.ttf"/>
     <None Include="..\..\..\..\..\..\Downloads\pixel_operator\PixelOperator.ttf"/>
     <None Include="..\..\..\..\..\JUCE\modules\juce_audio_devices\native\oboe\src\common\README.md"/>

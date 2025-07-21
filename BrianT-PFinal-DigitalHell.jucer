@@ -13,10 +13,13 @@
             file="Source/Mu45FilterCalc/Mu45FilterCalc.h"/>
     </GROUP>
     <GROUP id="{2383C5C2-68BE-03D2-62F8-D6081106DCD7}" name="Source">
+      <GROUP id="{967F03F7-7A40-F411-395E-C9391D49906F}" name="Images">
+        <FILE id="MdDQLj" name="digitalHellLogo.png" compile="0" resource="1"
+              file="Source/digitalHellLogo.png"/>
+        <FILE id="xy5HBm" name="red slider.png" compile="0" resource="1" file="Source/red slider.png"/>
+      </GROUP>
       <FILE id="rI7INC" name="FrequencySliderLookAndFeel.h" compile="0" resource="0"
             file="Source/FrequencySliderLookAndFeel.h"/>
-      <FILE id="MdDQLj" name="digitalHellLogo.png" compile="0" resource="1"
-            file="Source/digitalHellLogo.png"/>
       <FILE id="K5D5VK" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="bRQOEX" name="PluginProcessor.h" compile="0" resource="0"

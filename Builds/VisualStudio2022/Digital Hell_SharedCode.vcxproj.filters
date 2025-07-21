@@ -5,6 +5,9 @@
     <Filter Include="Digital Hell\Mu45FilterCalc">
       <UniqueIdentifier>{59E8144F-7A7E-4E57-8E04-BEFE37370C4A}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Digital Hell\Source\Images">
+      <UniqueIdentifier>{4837E89B-D7BB-5BDC-6CC9-D859D77A9040}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Digital Hell\Source">
       <UniqueIdentifier>{82DE1B1B-D96A-2FD7-490E-AB0950BF4810}</UniqueIdentifier>
     </Filter>
@@ -7629,7 +7632,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Source\digitalHellLogo.png">
-      <Filter>Digital Hell\Source</Filter>
+      <Filter>Digital Hell\Source\Images</Filter>
+    </None>
+    <None Include="..\..\Source\red slider.png">
+      <Filter>Digital Hell\Source\Images</Filter>
     </None>
     <None Include="..\..\..\..\..\..\Downloads\pixel_operator\PixelOperator-Bold.ttf">
       <Filter>Digital Hell</Filter>

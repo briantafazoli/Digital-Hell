@@ -26,12 +26,13 @@ public:
 
         frequencySliderLookandFeel = std::make_unique<FrequencySliderLookAndFeel>();
         mFrequencySlider.setLookAndFeel(frequencySliderLookandFeel.get());
-
         mFrequencySlider.setSliderStyle(Slider::SliderStyle::TwoValueHorizontal);
+
         Range<double> defaultValues = getDefaultValues();
         double defaultLowValue = defaultValues.getStart();
         double defaultHighValue = defaultValues.getEnd();
         mFrequencySlider.setMinAndMaxValues(defaultLowValue, defaultHighValue);
+
         mFrequencySlider.setTextBoxStyle(Slider::NoTextBox, false, 50, 20);
         mFrequencySlider.setColour(juce::Slider::trackColourId, juce::Colours::transparentBlack);
         mFrequencySlider.setColour(juce::Slider::backgroundColourId, juce::Colours::transparentBlack);
@@ -126,10 +127,6 @@ public:
 
     Range<double> getDefaultValues() {
         return Range<double>(lowMidCutoff, highMidCutoff);
-    }
-
-    void setBoundsWithinFile(Rectangle<float> newBounds) {
-        bounds = newBounds;
     }
 
     Rectangle<float> getBounds() {

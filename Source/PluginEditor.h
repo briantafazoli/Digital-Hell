@@ -106,6 +106,7 @@ private:
     }
 
     Image logo = ImageCache::getFromMemory(BinaryData::digitalHellLogo_png, BinaryData::digitalHellLogo_pngSize);
+    
 
     static const Font& get8BitFont()
     {

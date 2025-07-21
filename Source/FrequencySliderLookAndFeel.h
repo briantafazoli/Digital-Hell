@@ -19,6 +19,12 @@ class FrequencySliderLookAndFeel  : public juce::LookAndFeel_V4
 {
 public:
 
+    FrequencySliderLookAndFeel() {
+
+        Image redSlider = ImageCache::getFromMemory(BinaryData::red_slider_png, BinaryData::red_slider_pngSize);
+
+    }
+
     void drawLinearSlider(juce::Graphics& g, int x, int y, int width, int height,
         float sliderPos, float minSliderPos, float maxSliderPos,
         const juce::Slider::SliderStyle style, juce::Slider& slider) override
@@ -43,13 +49,15 @@ public:
         g.fillRect(bounds.getX(), bounds.getY() + 21.25f, 7.5f, 3.75f);                       // bottom-left
         g.fillRect(bounds.getRight() - 7.5f, bounds.getY() + 21.25f, 7.5f, 3.75f);            // bottom-right
 
-        // Draw thumbs
-        const float thumbRadius = 6.0f;
-        g.setColour(juce::Colours::red);
-        g.fillEllipse(minSliderPos - thumbRadius, bounds.getCentreY() - thumbRadius, thumbRadius * 2, thumbRadius * 2);
+        const float imageWidth = 20.0f;
+        const float imageHeight = 20.0f;
+        float imageY = bounds.getCentreY() - imageHeight / 2.0f;
+        
+        g.drawImage(redSlider,
+            minSliderPos - imageWidth / 2.0f, imageY,
+            imageWidth, imageHeight,
+            0, 0, redSlider.getWidth(), redSlider.getHeight());
 
-        g.setColour(juce::Colours::blue);
-        g.fillEllipse(maxSliderPos - thumbRadius, bounds.getCentreY() - thumbRadius, thumbRadius * 2, thumbRadius * 2);
 
     }
 
@@ -57,5 +65,12 @@ public:
     {
         return 6;
     }
+
+
+
+private:
+
+    Image redSlider;
+
 };
 
