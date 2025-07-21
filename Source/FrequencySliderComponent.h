@@ -21,8 +21,6 @@ class FrequencySliderComponent  : public juce::Component
 public:
     FrequencySliderComponent(AudioProcessorValueTreeState& state) : apvts(state)
     {
-        // In your constructor, you should add any child components, and
-        // initialise any special settings that your component needs.
 
         frequencySliderLookandFeel = std::make_unique<FrequencySliderLookAndFeel>();
         mFrequencySlider.setLookAndFeel(frequencySliderLookandFeel.get());
@@ -31,7 +29,7 @@ public:
         Range<double> defaultValues = getDefaultValues();
         double defaultLowValue = defaultValues.getStart();
         double defaultHighValue = defaultValues.getEnd();
-        mFrequencySlider.setMinAndMaxValues(defaultLowValue, defaultHighValue);
+        mFrequencySlider.setMinAndMaxValues(minFrequency, maxFrequency);
 
         mFrequencySlider.setTextBoxStyle(Slider::NoTextBox, false, 50, 20);
         mFrequencySlider.setColour(juce::Slider::trackColourId, juce::Colours::transparentBlack);
@@ -51,7 +49,6 @@ public:
 
         addAndMakeVisible(mFrequencySlider);
 
-
     }
 
     ~FrequencySliderComponent() override
@@ -61,71 +58,31 @@ public:
 
     }
 
-    //void paint (juce::Graphics& g) override
-    //{
-    //    /* This demo code just fills the component's background and
-    //       draws some placeholder text to get you started.
+    void paint(Graphics& g) override {
 
-    //       You should replace everything in this method with your own
-    //       drawing code..
-    //    */
+        Rectangle<int> bounds = getLocalBounds();
 
-    //    //g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
+        Rectangle<int> redSliderIndicator = Rectangle(bounds.getX(), bounds.getHeight() - 40, bounds.getWidth() / 2, 40);
+        g.setColour(Colours::red);
+        g.drawRect(redSliderIndicator, 1.0f);
 
-    //    g.setColour (juce::Colours::grey);
-    //    /*g.drawRect (getLocalBounds(), 1);*/   // draw an outline around the component
+        Rectangle<int> blueSliderIndicator = Rectangle(bounds.getWidth() / 2, bounds.getHeight() - 40, bounds.getWidth() / 2, 40);
+        g.setColour(Colours::blue);
+        g.drawRect(blueSliderIndicator, 1.0f);
 
-    //    g.setColour (juce::Colours::white);
-    //    g.setFont (juce::FontOptions (14.0f));
-    //    g.drawText ("FrequencySlider", getLocalBounds(),
-    //                juce::Justification::centred, true);   // draw some placeholder text
-
-    //    Rectangle<float> bounds = getLocalBounds().toFloat();
-    //    setBoundsWithinFile(bounds);
-
-    //    Rectangle outerWhiteRectangle = Rectangle(bounds.getX(), bounds.getY() + 30.0f, bounds.getWidth(), 15.0f);
-    //    g.drawRect(outerWhiteRectangle);
-    //    g.fillRect(outerWhiteRectangle);
-
-    //    Rectangle innerBlackRectangle = Rectangle(bounds.getX() + 7.5f, bounds.getY() + 33.75f, bounds.getWidth() - 15.0f, 7.5f);
-    //    g.setColour(Colours::black);
-    //    g.drawRect(innerBlackRectangle);
-    //    g.fillRect(innerBlackRectangle);
-
-    //    // FAUX 8 BIT
-
-    //    Rectangle topLeftBlackSquare = Rectangle(bounds.getX(), bounds.getY() + 30.0f, 7.5f, 3.75f);
-    //    g.drawRect(topLeftBlackSquare);
-    //    g.fillRect(topLeftBlackSquare);
-
-    //    Rectangle topRightBlackSquare = Rectangle(bounds.getWidth() - 7.5f, bounds.getY() + 30.0f, 7.5f, 3.75f);
-    //    g.drawRect(topRightBlackSquare);
-    //    g.fillRect(topRightBlackSquare);
-
-    //    Rectangle bottomLeftBlackSquare = Rectangle(bounds.getX(), bounds.getY() + 41.25f, 7.5f, 3.75f);
-    //    g.drawRect(bottomLeftBlackSquare);
-    //    g.fillRect(bottomLeftBlackSquare);
-
-    //    Rectangle bottomRightBlackSquare = Rectangle(bounds.getWidth() - 7.5f, bounds.getY() + 41.25f, 7.5f, 3.75f);
-    //    g.drawRect(bottomRightBlackSquare);
-    //    g.fillRect(bottomRightBlackSquare);
-
-    //}
+    }
 
     void resized() override
     {
-        // This method is where you should set the bounds of any child
-        // components that your component contains..
-
         mFrequencySlider.setBounds(getLocalBounds());
 
     }
 
-    Range<double> getRange() {
+    Range<double> getRange() /*Returns the minimum and maximum frequencies declared in this class*/ {
         return Range<double>(minFrequency, maxFrequency);
     }
 
-    Range<double> getDefaultValues() {
+    Range<double> getDefaultValues()/*Returns the default values for frequency cutoffs declared in this class*/ {
         return Range<double>(lowMidCutoff, highMidCutoff);
     }
 

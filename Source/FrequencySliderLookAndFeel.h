@@ -25,7 +25,7 @@ public:
         DBG("Red Slider Loaded: " << (redSlider.isValid() ? "yes" : "no"));
 
         blueSlider = ImageCache::getFromMemory(BinaryData::blue_slider_png, BinaryData::blue_slider_pngSize);
-        DBG("Red Slider Loaded: " << (redSlider.isValid() ? "yes" : "no"));
+        DBG("Blue Slider Loaded: " << (redSlider.isValid() ? "yes" : "no"));
 
     }
 
@@ -57,7 +57,7 @@ public:
         {
 
             g.drawImage(redSlider,
-                minSliderPos - sliderImageWidth / 2.0f - 10.0f, bounds.getY() + 3.0f,
+                minSliderPos - sliderImageWidth / 2.0f, bounds.getY() + 3.0f,
                 sliderImageWidth, sliderImageHeight,
                 0, 0, redSlider.getWidth(), redSlider.getHeight());
 
