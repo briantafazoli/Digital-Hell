@@ -95,7 +95,7 @@ private:
         );
     };
 
-    Rectangle<int> frequencyComponentPosition = Rectangle(50, 125, 765, 75);
+    Rectangle<int> frequencyComponentPosition = Rectangle(50, 125, 765, 125);
 
     Rectangle<int> getBoundsForFreqSlider() {
         int x = frequencyComponentPosition.getX() + 8;

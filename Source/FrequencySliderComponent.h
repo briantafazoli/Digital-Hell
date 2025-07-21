@@ -49,6 +49,12 @@ public:
 
         addAndMakeVisible(mFrequencySlider);
 
+        redSlider = ImageCache::getFromMemory(BinaryData::red_slider_png, BinaryData::red_slider_pngSize);
+        DBG("Red Slider Loaded: " << (redSlider.isValid() ? "yes" : "no"));
+
+        blueSlider = ImageCache::getFromMemory(BinaryData::blue_slider_png, BinaryData::blue_slider_pngSize);
+        DBG("Blue Slider Loaded: " << (redSlider.isValid() ? "yes" : "no"));
+
     }
 
     ~FrequencySliderComponent() override
@@ -62,13 +68,19 @@ public:
 
         Rectangle<int> bounds = getLocalBounds();
 
-        Rectangle<int> redSliderIndicator = Rectangle(bounds.getX(), bounds.getHeight() - 40, bounds.getWidth() / 2, 40);
+        scaleImages();
+
+        Rectangle<int> redSliderIndicator = Rectangle(bounds.getX(), bounds.getHeight() / 2 - 25, bounds.getWidth() / 2, 50);
         g.setColour(Colours::red);
         g.drawRect(redSliderIndicator, 1.0f);
 
-        Rectangle<int> blueSliderIndicator = Rectangle(bounds.getWidth() / 2, bounds.getHeight() - 40, bounds.getWidth() / 2, 40);
+        g.drawImage(redSlider, redSliderIndicator.getX(), redSliderIndicator.getCentreY() - 20.0f, sliderImageWidth, sliderImageHeight, 0.0f, 0.0f, redSlider.getWidth(), redSlider.getHeight());
+
+        Rectangle<int> blueSliderIndicator = Rectangle(bounds.getWidth() / 2, bounds.getHeight() / 2 - 25, bounds.getWidth() / 2, 50);
         g.setColour(Colours::blue);
         g.drawRect(blueSliderIndicator, 1.0f);
+
+        g.drawImage(blueSlider, blueSliderIndicator.getX(), blueSliderIndicator.getCentreY() - 20.0f, sliderImageWidth, sliderImageHeight, 0.0f, 0.0f, redSlider.getWidth(), redSlider.getHeight());
 
     }
 
@@ -90,7 +102,12 @@ public:
         return bounds;
     }
 
-    
+    void scaleImages() {
+
+        sliderImageWidth = redSlider.getWidth() * scaleFactor;
+        sliderImageHeight = redSlider.getHeight() * scaleFactor;
+
+    }
 
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(FrequencySliderComponent)
@@ -108,5 +125,13 @@ private:
     float highMidCutoff = 5000.0;
 
     Rectangle<float> bounds;
+
+    Image redSlider;
+    Image blueSlider;
+
+    const float scaleFactor = 0.175; // How much i'm scaling the image by
+
+    float sliderImageWidth;
+    float sliderImageHeight;
 
 };
