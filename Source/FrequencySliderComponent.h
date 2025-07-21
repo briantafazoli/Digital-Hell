@@ -12,6 +12,7 @@
 
 #include <JuceHeader.h>
 #include "FrequencySliderLookAndFeel.h"
+#include "PluginEditor.h"
 
 //==============================================================================
 /*
@@ -67,20 +68,31 @@ public:
     void paint(Graphics& g) override {
 
         Rectangle<int> bounds = getLocalBounds();
+        g.setColour(Colours::white);
+        g.drawRect(bounds, 1.0f);
 
         scaleImages();
 
-        Rectangle<int> redSliderIndicator = Rectangle(bounds.getX(), bounds.getHeight() / 2 - 25, bounds.getWidth() / 2, 50);
+        Rectangle<int> redSliderIndicator = Rectangle(bounds.getX(), bounds.getCentreY() - 25, bounds.getWidth() / 2, 60);
         g.setColour(Colours::red);
         g.drawRect(redSliderIndicator, 1.0f);
 
-        g.drawImage(redSlider, redSliderIndicator.getX(), redSliderIndicator.getCentreY() - 20.0f, sliderImageWidth, sliderImageHeight, 0.0f, 0.0f, redSlider.getWidth(), redSlider.getHeight());
+        g.drawImage(redSlider, redSliderIndicator.getX(), redSliderIndicator.getY(), sliderImageWidth, sliderImageHeight, 0.0f, 0.0f, redSlider.getWidth(), redSlider.getHeight());
 
-        Rectangle<int> blueSliderIndicator = Rectangle(bounds.getWidth() / 2, bounds.getHeight() / 2 - 25, bounds.getWidth() / 2, 50);
+        Rectangle<int> blueSliderIndicator = Rectangle(bounds.getWidth() / 2, bounds.getHeight() / 2 - 25, bounds.getWidth() / 2, 60);
         g.setColour(Colours::blue);
         g.drawRect(blueSliderIndicator, 1.0f);
 
-        g.drawImage(blueSlider, blueSliderIndicator.getX(), blueSliderIndicator.getCentreY() - 20.0f, sliderImageWidth, sliderImageHeight, 0.0f, 0.0f, redSlider.getWidth(), redSlider.getHeight());
+        g.drawImage(blueSlider, blueSliderIndicator.getX(), blueSliderIndicator.getY(), sliderImageWidth, sliderImageHeight, 0.0f, 0.0f, redSlider.getWidth(), redSlider.getHeight());
+
+        g.setColour(Colours::white);
+        g.setFont(get8BitFont().withHeight(20.0f));
+
+        g.drawText("\t \t  determines the separation between the LOW", redSliderIndicator, Justification::topLeft);
+        g.drawText("and MID bands", redSliderIndicator, Justification::left);
+
+        g.drawText("\t \t  determines the separation between the MID", blueSliderIndicator, Justification::topLeft);
+        g.drawText("and HIGH bands", blueSliderIndicator, Justification::left);
 
     }
 
@@ -133,5 +145,19 @@ private:
 
     float sliderImageWidth;
     float sliderImageHeight;
+
+    static const Font& get8BitFont()
+    {
+        static Font pixelOperator(Font(Typeface::createSystemTypefaceFor(BinaryData::PixelOperator_ttf,
+            BinaryData::PixelOperator_ttfSize)));
+        return pixelOperator;
+    }
+
+    static const Font& get8BitFont_Bold()
+    {
+        static Font pixelOperator(Font(Typeface::createSystemTypefaceFor(BinaryData::PixelOperatorBold_ttf,
+            BinaryData::PixelOperatorBold_ttfSize)));
+        return pixelOperator;
+    }
 
 };

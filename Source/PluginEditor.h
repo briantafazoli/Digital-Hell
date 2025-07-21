@@ -36,6 +36,7 @@ public:
     void sliderValueChanged(Slider* slider) override;
     void buttonClicked(Button* button) override;
 
+
 private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
@@ -95,19 +96,18 @@ private:
         );
     };
 
-    Rectangle<int> frequencyComponentPosition = Rectangle(50, 125, 765, 125);
+    Rectangle<int> frequencyComponentPosition = Rectangle(50, 100, 765, 150);
 
     Rectangle<int> getBoundsForFreqSlider() {
         int x = frequencyComponentPosition.getX() + 8;
         int y = frequencyComponentPosition.getY() + 8;
         int width = frequencyComponentPosition.getWidth() - 15;
-        int height = 60;
+        int height = frequencyComponentPosition.getHeight();
         return Rectangle(x, y, width, height);
     }
 
     Image logo = ImageCache::getFromMemory(BinaryData::digitalHellLogo_png, BinaryData::digitalHellLogo_pngSize);
     
-
     static const Font& get8BitFont()
     {
         static Font pixelOperator(Font(Typeface::createSystemTypefaceFor(BinaryData::PixelOperator_ttf,
