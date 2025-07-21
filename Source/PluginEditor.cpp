@@ -19,7 +19,7 @@
 
 //==============================================================================
 BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcessorEditor (BrianTPFinalDigitalHellAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p)
+    : AudioProcessorEditor (&p), audioProcessor (p), frequencySliderComponent(p.getAPVTS())
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
@@ -294,32 +294,32 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
 
     addAndMakeVisible(frequencySliderComponent);
 
-    auto& apvts = audioProcessor.getAPVTS();
+    //auto& apvts = audioProcessor.getAPVTS();
 
-    // Sync low handle (minValue) with LoLPFCutoffFreq
-    mFrequencySlider.onValueChange = [this, &apvts]() {
-        if (auto* loParam = dynamic_cast<juce::AudioParameterFloat*>(apvts.getParameter("LoLPFCutoffFreq")))
-        {
-            loParam->setValueNotifyingHost(loParam->convertTo0to1((float)mFrequencySlider.getMinValue()));
-        }
+    //// Sync low handle (minValue) with LoLPFCutoffFreq
+    //mFrequencySlider.onValueChange = [this, &apvts]() {
+    //    if (auto* loParam = dynamic_cast<juce::AudioParameterFloat*>(apvts.getParameter("LoLPFCutoffFreq")))
+    //    {
+    //        loParam->setValueNotifyingHost(loParam->convertTo0to1((float)mFrequencySlider.getMinValue()));
+    //    }
 
-        if (auto* hiParam = dynamic_cast<juce::AudioParameterFloat*>(apvts.getParameter("HiHPFCutoffFreq")))
-        {
-            hiParam->setValueNotifyingHost(hiParam->convertTo0to1((float)mFrequencySlider.getMaxValue()));
-        }
-        };
+    //    if (auto* hiParam = dynamic_cast<juce::AudioParameterFloat*>(apvts.getParameter("HiHPFCutoffFreq")))
+    //    {
+    //        hiParam->setValueNotifyingHost(hiParam->convertTo0to1((float)mFrequencySlider.getMaxValue()));
+    //    }
+    //    };
 
 
-    mFrequencySlider.setSliderStyle(Slider::SliderStyle::TwoValueHorizontal);
-    mFrequencySlider.setRange(frequencySliderComponent.getRange(), 1);
-    Range<double> defaultValues = frequencySliderComponent.getDefaultValues();
-    double defaultLowValue = defaultValues.getStart();
-    double defaultHighValue = defaultValues.getEnd();
-    mFrequencySlider.setMinAndMaxValues(defaultLowValue, defaultHighValue);
-    mFrequencySlider.setTextBoxStyle(Slider::NoTextBox, false, 50, 20);
-    mFrequencySlider.setColour(juce::Slider::trackColourId, juce::Colours::transparentBlack);
-    mFrequencySlider.setColour(juce::Slider::backgroundColourId, juce::Colours::transparentBlack);
-    addAndMakeVisible(mFrequencySlider);
+    //mFrequencySlider.setSliderStyle(Slider::SliderStyle::TwoValueHorizontal);
+    //mFrequencySlider.setRange(frequencySliderComponent.getRange(), 1);
+    //Range<double> defaultValues = frequencySliderComponent.getDefaultValues();
+    //double defaultLowValue = defaultValues.getStart();
+    //double defaultHighValue = defaultValues.getEnd();
+    //mFrequencySlider.setMinAndMaxValues(defaultLowValue, defaultHighValue);
+    //mFrequencySlider.setTextBoxStyle(Slider::NoTextBox, false, 50, 20);
+    //mFrequencySlider.setColour(juce::Slider::trackColourId, juce::Colours::transparentBlack);
+    //mFrequencySlider.setColour(juce::Slider::backgroundColourId, juce::Colours::transparentBlack);
+    //addAndMakeVisible(mFrequencySlider);
 
 
 }
