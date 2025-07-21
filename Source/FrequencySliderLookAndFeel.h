@@ -22,7 +22,10 @@ public:
     FrequencySliderLookAndFeel() {
 
         redSlider = ImageCache::getFromMemory(BinaryData::red_slider_png, BinaryData::red_slider_pngSize);
-        DBG("Image loaded: " << (redSlider.isValid() ? "yes" : "no"));
+        DBG("Red Slider Loaded: " << (redSlider.isValid() ? "yes" : "no"));
+
+        blueSlider = ImageCache::getFromMemory(BinaryData::blue_slider_png, BinaryData::blue_slider_pngSize);
+        DBG("Red Slider Loaded: " << (redSlider.isValid() ? "yes" : "no"));
 
     }
 
@@ -54,16 +57,21 @@ public:
         {
 
             g.drawImage(redSlider,
-                minSliderPos - imageWidth / 2.0f, bounds.getY() + 3.0f,
-                imageWidth, imageHeight,
+                minSliderPos - sliderImageWidth / 2.0f - 10.0f, bounds.getY() + 3.0f,
+                sliderImageWidth, sliderImageHeight,
                 0, 0, redSlider.getWidth(), redSlider.getHeight());
+
+            g.drawImage(blueSlider,
+                maxSliderPos - sliderImageWidth / 2.0f, bounds.getY() + 3.0f,
+                sliderImageWidth, sliderImageHeight,
+                0, 0, blueSlider.getWidth(), blueSlider.getHeight());
 
         }
 
         else {
             g.drawImage(redSlider,
                 bounds.getX() + 5.0f, bounds.getY() + 3.0f,
-                imageWidth, imageHeight,
+                sliderImageWidth, sliderImageHeight,
                 0, 0, redSlider.getWidth(), redSlider.getHeight());
         }
 
@@ -73,24 +81,25 @@ public:
     int getSliderThumbRadius(juce::Slider& slider) override
     {
         scaleImages();
-        return imageWidth;
+        return sliderImageWidth;
     }
 
     void scaleImages() {
 
-        imageWidth = redSlider.getWidth() * scaleFactor;
-        imageHeight = redSlider.getHeight() * scaleFactor;
+        sliderImageWidth = redSlider.getWidth() * scaleFactor;
+        sliderImageHeight = redSlider.getHeight() * scaleFactor;
 
     }
 
 private:
 
     Image redSlider;
+    Image blueSlider;
 
     const float scaleFactor = 0.25; // How much i'm scaling the image by
 
-    float imageWidth;
-    float imageHeight;
+    float sliderImageWidth;
+    float sliderImageHeight;
 
 };
 
