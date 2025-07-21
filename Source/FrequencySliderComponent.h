@@ -30,6 +30,8 @@ public:
         Range<double> defaultValues = getDefaultValues();
         double defaultLowValue = defaultValues.getStart();
         double defaultHighValue = defaultValues.getEnd();
+        mFrequencySlider.setRange(getRange(), 0);
+
         mFrequencySlider.setMinAndMaxValues(minFrequency, maxFrequency);
 
         mFrequencySlider.setTextBoxStyle(Slider::NoTextBox, false, 50, 20);
@@ -73,13 +75,13 @@ public:
 
         scaleImages();
 
-        Rectangle<int> redSliderIndicator = Rectangle(bounds.getX(), bounds.getCentreY() - 25, bounds.getWidth() / 2, 60);
+        Rectangle<int> redSliderIndicator = Rectangle(bounds.getX(), bounds.getCentreY(), bounds.getWidth() / 2, 60);
         g.setColour(Colours::red);
         g.drawRect(redSliderIndicator, 1.0f);
 
         g.drawImage(redSlider, redSliderIndicator.getX(), redSliderIndicator.getY(), sliderImageWidth, sliderImageHeight, 0.0f, 0.0f, redSlider.getWidth(), redSlider.getHeight());
 
-        Rectangle<int> blueSliderIndicator = Rectangle(bounds.getWidth() / 2, bounds.getHeight() / 2 - 25, bounds.getWidth() / 2, 60);
+        Rectangle<int> blueSliderIndicator = Rectangle(bounds.getWidth() / 2, bounds.getCentreY(), bounds.getWidth() / 2, 60);
         g.setColour(Colours::blue);
         g.drawRect(blueSliderIndicator, 1.0f);
 

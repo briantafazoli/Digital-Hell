@@ -79,9 +79,14 @@ public:
             g.setColour(Colours::white);
             g.drawRect(minLabel, 1.0f);
 
-            
-
             g.drawFittedText(lowMidValue, minLabel, Justification::centred, 1);
+
+            Rectangle <int> maxLabel = Rectangle<int>{
+                (int)minSliderPos - 35, (int)bounds.getY() + 5,
+                70, 20
+            };
+            g.setColour(Colours::white);
+            g.drawRect(minLabel, 1.0f);
 
         }
 
