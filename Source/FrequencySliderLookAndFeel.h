@@ -21,7 +21,8 @@ public:
 
     FrequencySliderLookAndFeel() {
 
-        Image redSlider = ImageCache::getFromMemory(BinaryData::red_slider_png, BinaryData::red_slider_pngSize);
+        redSlider = ImageCache::getFromMemory(BinaryData::red_slider_png, BinaryData::red_slider_pngSize);
+        DBG("Image loaded: " << (redSlider.isValid() ? "yes" : "no"));
 
     }
 
@@ -49,12 +50,12 @@ public:
         g.fillRect(bounds.getX(), bounds.getY() + 21.25f, 7.5f, 3.75f);                       // bottom-left
         g.fillRect(bounds.getRight() - 7.5f, bounds.getY() + 21.25f, 7.5f, 3.75f);            // bottom-right
 
-        const float imageWidth = 20.0f;
-        const float imageHeight = 20.0f;
+        const float imageWidth = redSlider.getWidth();
+        const float imageHeight = redSlider.getHeight();
         float imageY = bounds.getCentreY() - imageHeight / 2.0f;
         
         g.drawImage(redSlider,
-            minSliderPos - imageWidth / 2.0f, imageY,
+            bounds.getX(), imageY,
             imageWidth, imageHeight,
             0, 0, redSlider.getWidth(), redSlider.getHeight());
 
