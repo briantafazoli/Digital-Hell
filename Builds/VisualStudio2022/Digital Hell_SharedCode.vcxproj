@@ -2872,9 +2872,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Mu45FilterCalc\Mu45FilterCalc.h"/>
+    <ClInclude Include="..\..\Source\FrequencySliderLookAndFeel.h"/>
     <ClInclude Include="..\..\Source\PluginProcessor.h"/>
     <ClInclude Include="..\..\Source\PluginEditor.h"/>
-    <ClInclude Include="..\..\Source\FrequencySlider.h"/>
+    <ClInclude Include="..\..\Source\FrequencySliderComponent.h"/>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\StkLite-4.6.2\StkLite-4.6.2\BiQuad.h"/>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\StkLite-4.6.2\StkLite-4.6.2\Delay.h"/>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\StkLite-4.6.2\StkLite-4.6.2\DelayA.h"/>

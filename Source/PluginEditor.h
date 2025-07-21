@@ -18,7 +18,7 @@
 
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
-#include "FrequencySlider.h"
+#include "FrequencySliderComponent.h"
 
 //==============================================================================
 /**
@@ -99,9 +99,9 @@ private:
 
     Rectangle<int> getBoundsForFreqSlider() {
         int x = frequencyComponentPosition.getX() + 8;
-        int y = frequencyComponentPosition.getY() + 2;
+        int y = frequencyComponentPosition.getY() + 8;
         int width = frequencyComponentPosition.getWidth() - 15;
-        int height = 50;
+        int height = 60;
         return Rectangle(x, y, width, height);
     }
 

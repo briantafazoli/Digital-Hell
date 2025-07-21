@@ -3627,13 +3627,16 @@
     <ClInclude Include="..\..\Source\Mu45FilterCalc\Mu45FilterCalc.h">
       <Filter>Digital Hell\Mu45FilterCalc</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\FrequencySliderLookAndFeel.h">
+      <Filter>Digital Hell\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\PluginProcessor.h">
       <Filter>Digital Hell\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\PluginEditor.h">
       <Filter>Digital Hell\Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\FrequencySlider.h">
+    <ClInclude Include="..\..\Source\FrequencySliderComponent.h">
       <Filter>Digital Hell\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\StkLite-4.6.2\StkLite-4.6.2\BiQuad.h">

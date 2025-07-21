@@ -13,6 +13,8 @@
             file="Source/Mu45FilterCalc/Mu45FilterCalc.h"/>
     </GROUP>
     <GROUP id="{2383C5C2-68BE-03D2-62F8-D6081106DCD7}" name="Source">
+      <FILE id="rI7INC" name="FrequencySliderLookAndFeel.h" compile="0" resource="0"
+            file="Source/FrequencySliderLookAndFeel.h"/>
       <FILE id="MdDQLj" name="digitalHellLogo.png" compile="0" resource="1"
             file="Source/digitalHellLogo.png"/>
       <FILE id="K5D5VK" name="PluginProcessor.cpp" compile="1" resource="0"
@@ -22,8 +24,8 @@
       <FILE id="OM2YRy" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
       <FILE id="dCJOAX" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
-      <FILE id="VEXZJS" name="FrequencySlider.h" compile="0" resource="0"
-            file="Source/FrequencySlider.h"/>
+      <FILE id="VEXZJS" name="FrequencySliderComponent.h" compile="0" resource="0"
+            file="Source/FrequencySliderComponent.h"/>
     </GROUP>
     <GROUP id="{C8462065-02CF-23F5-E321-341115203F98}" name="StkLite-4.6.2">
       <GROUP id="{6CB7C523-9F24-7093-D736-837641181CFB}" name="__MACOSX">
