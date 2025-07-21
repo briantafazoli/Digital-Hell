@@ -12,10 +12,52 @@
       <FILE id="a7df0D" name="Mu45FilterCalc.h" compile="0" resource="0"
             file="Source/Mu45FilterCalc/Mu45FilterCalc.h"/>
     </GROUP>
+    <GROUP id="{C093370C-915C-613E-C6A4-06D76EA039CC}" name="Source">
+      <GROUP id="{001E9178-0A46-4E33-1DA2-89E0AB830319}" name="Mu45FilterCalc">
+        <FILE id="RA0V1Y" name="juce_module_info" compile="0" resource="1"
+              file="Source/Mu45FilterCalc/juce_module_info"/>
+      </GROUP>
+      <GROUP id="{4D521F95-AB16-43E1-98D9-BE60A4CE30F7}" name="StkLite-4.6.2">
+        <GROUP id="{CCAD8773-0553-74AE-2607-48DE6860F443}" name="__MACOSX">
+          <GROUP id="{155A4A29-9898-7E5D-A8CA-73EC048245D0}" name="StkLite-4.6.2"/>
+        </GROUP>
+        <GROUP id="{0C6F664D-F876-8EB7-6037-4E238A12FC62}" name="StkLite-4.6.2">
+          <FILE id="RmKXBc" name="BiQuad.cpp" compile="1" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/BiQuad.cpp"/>
+          <FILE id="TUqh7P" name="BiQuad.h" compile="0" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/BiQuad.h"/>
+          <FILE id="c1sMoN" name="Delay.cpp" compile="1" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/Delay.cpp"/>
+          <FILE id="nbBCOw" name="Delay.h" compile="0" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/Delay.h"/>
+          <FILE id="jMS78Y" name="DelayA.cpp" compile="1" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/DelayA.cpp"/>
+          <FILE id="auJAmu" name="DelayA.h" compile="0" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/DelayA.h"/>
+          <FILE id="atpc2I" name="DelayL.cpp" compile="1" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/DelayL.cpp"/>
+          <FILE id="Bt2cj1" name="DelayL.h" compile="0" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/DelayL.h"/>
+          <FILE id="PJ1DEC" name="Filter.h" compile="0" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/Filter.h"/>
+          <FILE id="CHz3VS" name="Fir.cpp" compile="1" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/Fir.cpp"/>
+          <FILE id="M1P0OK" name="Fir.h" compile="0" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/Fir.h"/>
+          <FILE id="DkG9eG" name="FormSwep.cpp" compile="1" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/FormSwep.cpp"/>
+          <FILE id="NoIPER" name="FormSwep.h" compile="0" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/FormSwep.h"/>
+          <FILE id="rjJrxw" name="Iir.h" compile="0" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/Iir.h"/>
+          <FILE id="AT9gcL" name="OnePole.cpp" compile="1" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/OnePole.cpp"/>
+          <FILE id="VgHrlq" name="OnePole.h" compile="0" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/OnePole.h"/>
+          <FILE id="uJwSsO" name="OneZero.cpp" compile="1" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/OneZero.cpp"/>
+          <FILE id="nZ0BqK" name="OneZero.h" compile="0" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/OneZero.h"/>
+          <FILE id="AwlPPW" name="PoleZero.cpp" compile="1" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/PoleZero.cpp"/>
+          <FILE id="MUVJPv" name="PoleZero.h" compile="0" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/PoleZero.h"/>
+          <FILE id="Jdj4Bl" name="Stk.cpp" compile="1" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/Stk.cpp"/>
+          <FILE id="DmmF8s" name="Stk.h" compile="0" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/Stk.h"/>
+          <FILE id="v64xWx" name="TapDelay.cpp" compile="1" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/TapDelay.cpp"/>
+          <FILE id="tV8qmu" name="TapDelay.h" compile="0" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/TapDelay.h"/>
+          <FILE id="mUTPpv" name="TwoPole.cpp" compile="1" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/TwoPole.cpp"/>
+          <FILE id="NJGVqB" name="TwoPole.h" compile="0" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/TwoPole.h"/>
+          <FILE id="Uuy5QQ" name="TwoZero.cpp" compile="1" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/TwoZero.cpp"/>
+          <FILE id="Hgo3Rk" name="TwoZero.h" compile="0" resource="0" file="Source/StkLite-4.6.2/StkLite-4.6.2/TwoZero.h"/>
+        </GROUP>
+      </GROUP>
+    </GROUP>
     <GROUP id="{2383C5C2-68BE-03D2-62F8-D6081106DCD7}" name="Source">
       <GROUP id="{967F03F7-7A40-F411-395E-C9391D49906F}" name="Images">
         <FILE id="MdDQLj" name="digitalHellLogo.png" compile="0" resource="1"
               file="Source/digitalHellLogo.png"/>
+        <FILE id="CtJjB7" name="blue slider.png" compile="0" resource="1" file="Source/blue slider.png"/>
         <FILE id="xy5HBm" name="red slider.png" compile="0" resource="1" file="Source/red slider.png"/>
       </GROUP>
       <FILE id="rI7INC" name="FrequencySliderLookAndFeel.h" compile="0" resource="0"

@@ -49,29 +49,48 @@ public:
         g.fillRect(bounds.getRight() - 7.5f, bounds.getY() + 10.0f, 7.5f, 3.75f);             // top-right
         g.fillRect(bounds.getX(), bounds.getY() + 21.25f, 7.5f, 3.75f);                       // bottom-left
         g.fillRect(bounds.getRight() - 7.5f, bounds.getY() + 21.25f, 7.5f, 3.75f);            // bottom-right
+               
+        if (style == juce::Slider::TwoValueHorizontal || style == juce::Slider::ThreeValueHorizontal)
+        {
 
-        const float imageWidth = redSlider.getWidth();
-        const float imageHeight = redSlider.getHeight();
-        float imageY = bounds.getCentreY() - imageHeight / 2.0f;
-        
-        g.drawImage(redSlider,
-            bounds.getX(), imageY,
-            imageWidth, imageHeight,
-            0, 0, redSlider.getWidth(), redSlider.getHeight());
+            g.drawImage(redSlider,
+                minSliderPos - imageWidth / 2.0f, bounds.getY() + 3.0f,
+                imageWidth, imageHeight,
+                0, 0, redSlider.getWidth(), redSlider.getHeight());
+
+        }
+
+        else {
+            g.drawImage(redSlider,
+                bounds.getX() + 5.0f, bounds.getY() + 3.0f,
+                imageWidth, imageHeight,
+                0, 0, redSlider.getWidth(), redSlider.getHeight());
+        }
 
 
     }
 
     int getSliderThumbRadius(juce::Slider& slider) override
     {
-        return 6;
+        scaleImages();
+        return imageWidth;
     }
 
+    void scaleImages() {
 
+        imageWidth = redSlider.getWidth() * scaleFactor;
+        imageHeight = redSlider.getHeight() * scaleFactor;
+
+    }
 
 private:
 
     Image redSlider;
+
+    const float scaleFactor = 0.25; // How much i'm scaling the image by
+
+    float imageWidth;
+    float imageHeight;
 
 };
 

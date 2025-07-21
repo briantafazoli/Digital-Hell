@@ -5,6 +5,18 @@
     <Filter Include="Digital Hell\Mu45FilterCalc">
       <UniqueIdentifier>{59E8144F-7A7E-4E57-8E04-BEFE37370C4A}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Digital Hell\Source\Mu45FilterCalc">
+      <UniqueIdentifier>{E51CE06B-ABD7-D5C4-C88D-F73F9E6E96E7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2">
+      <UniqueIdentifier>{D36B5F00-57FE-7A4D-CDE8-662B174E400A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Digital Hell\Source\StkLite-4.6.2">
+      <UniqueIdentifier>{DCF9B30D-F5C7-9DD1-32B3-B5E3555D6F8F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Digital Hell\Source">
+      <UniqueIdentifier>{82DE1B1B-D96A-2FD7-490E-AB0950BF4810}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Digital Hell\Source\Images">
       <UniqueIdentifier>{4837E89B-D7BB-5BDC-6CC9-D859D77A9040}</UniqueIdentifier>
     </Filter>
@@ -696,6 +708,45 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\Mu45FilterCalc\Mu45FilterCalc.cpp">
       <Filter>Digital Hell\Mu45FilterCalc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\BiQuad.cpp">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\Delay.cpp">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\DelayA.cpp">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\DelayL.cpp">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\Fir.cpp">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\FormSwep.cpp">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\OnePole.cpp">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\OneZero.cpp">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\PoleZero.cpp">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\Stk.cpp">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\TapDelay.cpp">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\TwoPole.cpp">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\TwoZero.cpp">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp">
       <Filter>Digital Hell\Source</Filter>
@@ -3629,6 +3680,51 @@
   <ItemGroup>
     <ClInclude Include="..\..\Source\Mu45FilterCalc\Mu45FilterCalc.h">
       <Filter>Digital Hell\Mu45FilterCalc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\BiQuad.h">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\Delay.h">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\DelayA.h">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\DelayL.h">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\Filter.h">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\Fir.h">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\FormSwep.h">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\Iir.h">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\OnePole.h">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\OneZero.h">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\PoleZero.h">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\Stk.h">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\TapDelay.h">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\TwoPole.h">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\TwoZero.h">
+      <Filter>Digital Hell\Source\StkLite-4.6.2\StkLite-4.6.2</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\FrequencySliderLookAndFeel.h">
       <Filter>Digital Hell\Source</Filter>
@@ -7631,7 +7727,13 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Source\Mu45FilterCalc\juce_module_info">
+      <Filter>Digital Hell\Source\Mu45FilterCalc</Filter>
+    </None>
     <None Include="..\..\Source\digitalHellLogo.png">
+      <Filter>Digital Hell\Source\Images</Filter>
+    </None>
+    <None Include="..\..\Source\blue slider.png">
       <Filter>Digital Hell\Source\Images</Filter>
     </None>
     <None Include="..\..\Source\red slider.png">
