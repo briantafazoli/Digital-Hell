@@ -122,7 +122,7 @@ public:
         return bounds;
     }
 
-    void scaleImages() {
+    void scaleImages() /* This just scales the images by the scale factor */ {
 
         sliderImageWidth = redSlider.getWidth() * scaleFactor;
         sliderImageHeight = redSlider.getHeight() * scaleFactor;
