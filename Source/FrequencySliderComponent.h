@@ -38,12 +38,12 @@ public:
 
         // Default Values and Range
 
-        Range<double> defaultValues = getDefaultValues();
-        double defaultLowValue = defaultValues.getStart();
-        double defaultHighValue = defaultValues.getEnd();
-        mFrequencySlider.setRange(getRange(), 0);
+        //Range<double> defaultValues = getDefaultValues();
+        //double defaultLowValue = defaultValues.getStart();
+        //double defaultHighValue = defaultValues.getEnd();
+        //mFrequencySlider.setRange(getRange(), 0);
 
-        mFrequencySlider.setMinAndMaxValues(minFrequency, maxFrequency);
+        //mFrequencySlider.setMinAndMaxValues(minFrequency, maxFrequency);
 
         mFrequencySlider.setTextBoxStyle(Slider::NoTextBox, false, 50, 20);
         mFrequencySlider.setColour(juce::Slider::trackColourId, juce::Colours::transparentBlack);
@@ -51,13 +51,19 @@ public:
 
         // Sending Values to processor
 
+        addAndMakeVisible(mFrequencySlider);
+
         twoValueAttachment = std::make_unique<TwoValueSliderAttachment>(
             apvts,
             "LoLPFCutoffFreq",
             "HiHPFCutoffFreq",
             mFrequencySlider);
 
-        addAndMakeVisible(mFrequencySlider);
+        mFrequencySlider.setRange(getRange(), 0);
+
+        mFrequencySlider.setMinAndMaxValues(lowMidCutoff, highMidCutoff);
+
+        mFrequencySlider.setSkewFactorFromMidPoint(6324.6);
 
     }
 

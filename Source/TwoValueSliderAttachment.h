@@ -23,22 +23,29 @@ public:
 
         jassert(slider.getSliderStyle() == Slider::SliderStyle::TwoValueHorizontal);
 
-        auto* minParam = apvts.getParameter(minParamID);
-        auto* maxParam = apvts.getParameter(maxParamID);
+        minParam = apvtsRef.getParameter(minParamID);
+        maxParam = apvtsRef.getParameter(maxParamID);
 
         jassert(minParam && maxParam);
 
         //Set Initial Values
         slider.setMinAndMaxValues(minParam->getValue(), maxParam->getValue());
 
-        //Sync Slider to parameters
-        //slider.onValueChange = [this]() {
-        //    if (updating) return;
-        //    updating = true;
-        //    apvtsRef.getParameter(minParamID)->setValueNotifyingHost((float)sliderRef.getMinValue());
-        //    apvtsRef.getParameter(maxParamID)->setValueNotifyingHost((float)sliderRef.getMaxValue());
-        //    updating = false;
-        //    };
+       /* Sync Slider to parameters*/
+        this->sliderRef.onValueChange = [this]() {
+            if (this->updating) return;
+            this->updating = true;
+
+            if (this->minParam != nullptr)
+                this->minParam->setValueNotifyingHost(this->minParam->convertTo0to1((float)this->sliderRef.getMinValue()));
+
+            if (this->maxParam != nullptr)
+                this->maxParam->setValueNotifyingHost(this->maxParam->convertTo0to1((float)this->sliderRef.getMaxValue()));
+
+            this->updating = false;
+            };
+
+
 
         apvtsRef.addParameterListener(minParamID, this);
         apvtsRef.addParameterListener(maxParamID, this);
@@ -71,6 +78,9 @@ private:
     String minParamID;
     String maxParamID;
     Slider& sliderRef;
+
+    RangedAudioParameter* minParam = nullptr;
+    RangedAudioParameter* maxParam = nullptr;
 
     bool updating = false;
 
