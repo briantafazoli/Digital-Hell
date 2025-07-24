@@ -145,6 +145,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Mu45FilterCalc\Mu45FilterCalc.cpp"/>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\BiQuad.cpp"/>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\Delay.cpp"/>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\DelayA.cpp"/>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\DelayL.cpp"/>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\Fir.cpp"/>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\FormSwep.cpp"/>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\OnePole.cpp"/>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\OneZero.cpp"/>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\PoleZero.cpp"/>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\Stk.cpp"/>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\TapDelay.cpp"/>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\TwoPole.cpp"/>
+    <ClCompile Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\TwoZero.cpp"/>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp"/>
     <ClCompile Include="..\..\Source\PluginEditor.cpp"/>
     <ClCompile Include="..\..\..\..\..\JUCE\modules\StkLite-4.6.2\StkLite-4.6.2\BiQuad.cpp"/>
@@ -2872,8 +2885,26 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Mu45FilterCalc\Mu45FilterCalc.h"/>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\BiQuad.h"/>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\Delay.h"/>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\DelayA.h"/>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\DelayL.h"/>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\Filter.h"/>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\Fir.h"/>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\FormSwep.h"/>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\Iir.h"/>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\OnePole.h"/>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\OneZero.h"/>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\PoleZero.h"/>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\Stk.h"/>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\TapDelay.h"/>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\TwoPole.h"/>
+    <ClInclude Include="..\..\Source\StkLite-4.6.2\StkLite-4.6.2\TwoZero.h"/>
+    <ClInclude Include="..\..\Source\FrequencySliderLookAndFeel.h"/>
+    <ClInclude Include="..\..\Source\TwoValueSliderAttachment.h"/>
     <ClInclude Include="..\..\Source\PluginProcessor.h"/>
     <ClInclude Include="..\..\Source\PluginEditor.h"/>
+    <ClInclude Include="..\..\Source\FrequencySliderComponent.h"/>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\StkLite-4.6.2\StkLite-4.6.2\BiQuad.h"/>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\StkLite-4.6.2\StkLite-4.6.2\Delay.h"/>
     <ClInclude Include="..\..\..\..\..\JUCE\modules\StkLite-4.6.2\StkLite-4.6.2\DelayA.h"/>
@@ -4205,8 +4236,10 @@
     <ClInclude Include="..\..\JuceLibraryCode\JucePluginDefines.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Source\Mu45FilterCalc\juce_module_info"/>
     <None Include="..\..\Source\digitalHellLogo.png"/>
-    <None Include="..\..\..\..\..\..\Downloads\half-bold-pixel-7-font\HalfBoldPixel7-2rw3.ttf"/>
+    <None Include="..\..\Source\blue slider.png"/>
+    <None Include="..\..\Source\red slider.png"/>
     <None Include="..\..\..\..\..\..\Downloads\pixel_operator\PixelOperator-Bold.ttf"/>
     <None Include="..\..\..\..\..\..\Downloads\pixel_operator\PixelOperator.ttf"/>
     <None Include="..\..\..\..\..\JUCE\modules\juce_audio_devices\native\oboe\src\common\README.md"/>

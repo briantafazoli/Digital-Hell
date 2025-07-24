@@ -19,7 +19,7 @@
 
 //==============================================================================
 BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcessorEditor (BrianTPFinalDigitalHellAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p)
+    : AudioProcessorEditor (&p), audioProcessor (p), frequencySliderComponent(p.getAPVTS())
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
@@ -45,42 +45,6 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
 
     mLowHPFcAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
         audioProcessor.getAPVTS(), "LoHPFCutoffFreq", mLowHPFcSlider);
-
-    // LOW LPF, MID HPF FREQUENCY
-
-    auto* lowLPFcParam = audioProcessor.getAPVTS().getParameter("LoLPFCutoffFreq");
-    if (auto* floatParam = dynamic_cast<juce::AudioParameterFloat*>(lowLPFcParam))
-    {
-        mLowLPMidHPFcSlider.setRange(floatParam->range.start, floatParam->range.end);
-        mLowLPMidHPFcSlider.setSkewFactorFromMidPoint(500);
-    }
-
-    mLowLPMidHPFcSlider.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
-    mLowLPMidHPFcSlider.setTextBoxStyle(juce::Slider::TextBoxAbove, false, 60, 20);
-    mLowLPMidHPFcSlider.setTextValueSuffix(" Hz");
-    mLowLPMidHPFcSlider.setDoubleClickReturnValue(true, 500);
-    addAndMakeVisible(mLowLPMidHPFcSlider);
-
-    mLowLPMidHPFcAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-        audioProcessor.getAPVTS(), "LoLPFCutoffFreq", mLowLPMidHPFcSlider);
-
-    // MID LPF, HIGH HPF FREQUENCY
-
-    auto* highHPFcParam = audioProcessor.getAPVTS().getParameter("HiHPFCutoffFreq");
-    if (auto* floatParam = dynamic_cast<juce::AudioParameterFloat*>(highHPFcParam))
-    {
-        mMidLPHighHPFcSlider.setRange(floatParam->range.start, floatParam->range.end);
-        mMidLPHighHPFcSlider.setSkewFactorFromMidPoint(5000);
-    }
-
-    mMidLPHighHPFcSlider.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
-    mMidLPHighHPFcSlider.setTextBoxStyle(juce::Slider::TextBoxAbove, false, 60, 20);
-    mMidLPHighHPFcSlider.setTextValueSuffix(" Hz");
-    mMidLPHighHPFcSlider.setDoubleClickReturnValue(true, 5000);
-    addAndMakeVisible(mMidLPHighHPFcSlider);
-
-    mMidLPHighHPFcAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-        audioProcessor.getAPVTS(), "HiHPFCutoffFreq", mMidLPHighHPFcSlider);
 
     // HIGH LPF FREQUENCY
 
@@ -157,7 +121,7 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
     if (auto* floatParam = dynamic_cast<juce::AudioParameterFloat*>(lowDBParam))
     {
         mLowDBSlider.setRange(floatParam->range.start, floatParam->range.end);
-        mLowDBSlider.setSkewFactorFromMidPoint(-10);
+        mLowDBSlider.setSkewFactorFromMidPoint(-6);
     }
 
     mLowDBSlider.setSliderStyle(juce::Slider::SliderStyle::LinearVertical);
@@ -175,7 +139,7 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
     if (auto* floatParam = dynamic_cast<juce::AudioParameterFloat*>(lowDBParam))
     {
         mMidDBSlider.setRange(floatParam->range.start, floatParam->range.end);
-        mMidDBSlider.setSkewFactorFromMidPoint(-10);
+        mMidDBSlider.setSkewFactorFromMidPoint(-6);
     }
 
     mMidDBSlider.setSliderStyle(juce::Slider::SliderStyle::LinearVertical);
@@ -193,11 +157,11 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
     if (auto* floatParam = dynamic_cast<juce::AudioParameterFloat*>(highDBParam))
     {
         mHighDBSlider.setRange(floatParam->range.start, floatParam->range.end);
-        mHighDBSlider.setSkewFactorFromMidPoint(-10);
+        
     }
-
+    mHighDBSlider.setSkewFactorFromMidPoint(-6);
     mHighDBSlider.setSliderStyle(juce::Slider::SliderStyle::LinearVertical);
-    mHighDBSlider.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 50, 30);
+    mHighDBSlider.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 70, 35);
     mHighDBSlider.setTextValueSuffix(" dB");
     mHighDBSlider.setDoubleClickReturnValue(true, 0);
     addAndMakeVisible(mHighDBSlider);
@@ -290,6 +254,10 @@ BrianTPFinalDigitalHellAudioProcessorEditor::BrianTPFinalDigitalHellAudioProcess
     mLoadPresetButton.addListener(this);
     addAndMakeVisible(mLoadPresetButton);
 
+    // Frequency Slider 
+
+    addAndMakeVisible(frequencySliderComponent);
+
 }
 
 BrianTPFinalDigitalHellAudioProcessorEditor::~BrianTPFinalDigitalHellAudioProcessorEditor()
@@ -313,80 +281,38 @@ void BrianTPFinalDigitalHellAudioProcessorEditor::paint (juce::Graphics& g)
     
     // DIVIDERS AND LARGE LABELS
 
-    Line<float> lowDividerVert(Point<float>(300, 100), Point<float>(300, 575));
+    Line<float> lowDividerVert(Point<float>(300, 250), Point<float>(300, 590));
     g.drawLine(lowDividerVert);
 
-    Line<float> highDividerVert(Point<float>(575, 100), Point<float>(575, 575));
+    Line<float> highDividerVert(Point<float>(575, 250), Point<float>(575, 575));
     g.drawLine(highDividerVert);
 
-    Line<float> lowDividerHorz(Point<float>(0, 140), Point<float>(875, 140));
-    g.drawLine(lowDividerHorz);
-
-    Line<float> highDividerHorz(Point<float>(0, 100), Point<float>(875, 100));
-    g.drawLine(highDividerHorz);
-
-    juce::Rectangle<int> lowLabelRectangle = juce::Rectangle<int>::Rectangle(0, 100, 300, 40);
+    juce::Rectangle<int> lowLabelRectangle = juce::Rectangle<int>::Rectangle(0, 250, 300, 40);
+    g.drawRect(lowLabelRectangle);
     g.drawFittedText("LOW", lowLabelRectangle, juce::Justification::centred, 1);
 
-    juce::Rectangle<int> midLabelRectangle = juce::Rectangle<int>::Rectangle(300, 100, 275, 40);
+    juce::Rectangle<int> midLabelRectangle = juce::Rectangle<int>::Rectangle(300, 250, 275, 40);
+    g.drawRect(midLabelRectangle);
     g.drawFittedText("MID", midLabelRectangle, juce::Justification::centred, 1);
 
-    juce::Rectangle<int> highLabelRectangle = juce::Rectangle<int>::Rectangle(575, 100, 300, 40);
+    juce::Rectangle<int> highLabelRectangle = juce::Rectangle<int>::Rectangle(575, 250, 300, 40);
+    g.drawRect(highLabelRectangle);
     g.drawFittedText("HIGH", highLabelRectangle, juce::Justification::centred, 1);
 
     // SMALLER LABLES
 
-    // CUTOFFS
+    // CRUSH KNOBS
 
     g.setColour(Colours::mediumpurple);
-    g.setFont(get8BitFont().withHeight(35.0f));
+    g.setFont(get8BitFont().withHeight(45.0f));
 
-    juce::Rectangle<int> lowCutoffLabel = juce::Rectangle<int>::Rectangle(15, 150, 200, 100);
-    g.drawFittedText("Cutoff:", lowCutoffLabel, Justification::left, 1);
-
-    /*juce::Rectangle<int> midCutoffLabel = juce::Rectangle<int>::Rectangle(315, 140, 100, 100);
-    g.drawFittedText("Cutoff:", midCutoffLabel, Justification::left, 1);*/
-
-    juce::Rectangle<int> highCutoffLabel = juce::Rectangle<int>::Rectangle(590, 150, 200, 100);
-    g.drawFittedText("Cutoff:", highCutoffLabel, Justification::left, 1);
-
-    g.setColour(Colours::lightgrey);
-    g.setFont(Font("Arial", 17.0f, Font::plain));
-
-    // CUTOFF FILTER LABELS
-
-    Rectangle<int> lowCutoffHPFLabel = Rectangle<int>::Rectangle(180, 200, 115, 50);
-    g.drawFittedText("Hi Pass", lowCutoffHPFLabel, Justification::centred, 1);
-    
-    Rectangle<int> midCutoffHPFLabel = Rectangle<int>::Rectangle(315, 200, 115, 50);
-    g.drawFittedText("Hi Pass", midCutoffHPFLabel, Justification::centred, 1);
-
-    Rectangle<int> midCutoffLPFLabel = Rectangle<int>::Rectangle(430, 200, 115, 50);
-    g.drawFittedText("Lo Pass", midCutoffLPFLabel, Justification::centred, 1);
-
-    Rectangle<int> highCutoffLPFLabel = Rectangle<int>::Rectangle(755, 200, 115, 50);
-    g.drawFittedText("Lo Pass", highCutoffLPFLabel, Justification::centred, 1);
-
-    g.setFont(Font("Arial", 11.0f, Font::plain));
-
-    Rectangle<int> lowCutoffLPFLabel = Rectangle<int>::Rectangle(315, 215, 115, 50);
-    g.drawFittedText("+ Lo Pass (LOW)", lowCutoffLPFLabel, Justification::centred, 1);
-
-    Rectangle<int> highCutoffHPFLabel = Rectangle<int>::Rectangle(430, 215, 115, 50);
-    g.drawFittedText("+ Hi Pass (HIGH)", highCutoffHPFLabel, Justification::centred, 1);
-
-    // BIT DEPTH
-
-    g.setColour(Colours::mediumpurple);
-    g.setFont(get8BitFont().withHeight(35.0f));
-
-    Rectangle<int> lowCrushLabel = Rectangle<int>::Rectangle(5, 270, 130, 50);
+    Rectangle<int> lowCrushLabel = Rectangle<int>::Rectangle(20, 310, 130, 50);
     g.drawFittedText("Crush:", lowCrushLabel, Justification::centred, 1);
 
-    Rectangle<int> midCrushLabel = Rectangle<int>::Rectangle(310, 270, 130, 50);
+    Rectangle<int> midCrushLabel = Rectangle<int>::Rectangle(310, 310, 130, 50);
     g.drawFittedText("Crush:", midCrushLabel, Justification::centred, 1);
 
-    Rectangle<int> highCrushLabel = Rectangle<int>::Rectangle(580, 270, 130, 50);
+    Rectangle<int> highCrushLabel = Rectangle<int>::Rectangle(580, 310, 130, 50);
     g.drawFittedText("Crush:", highCrushLabel, Justification::centred, 1);
 
     // DWSP
@@ -394,36 +320,28 @@ void BrianTPFinalDigitalHellAudioProcessorEditor::paint (juce::Graphics& g)
     g.setColour(Colours::mediumpurple);
     g.setFont(get8BitFont().withHeight(30.0f));
 
-    Rectangle<int> lowDWSPLabel = Rectangle<int>::Rectangle(-25, 325, 300, 100);
-    g.drawFittedText("Downsample:", lowDWSPLabel, Justification::centred, 1);
+    Rectangle<int> lowDWSPLabel = Rectangle<int>::Rectangle(45, 355, 150, 100);
+    g.drawFittedText("Downsample:", lowDWSPLabel, Justification::left, 1);
 
-    Rectangle<int> midDWSPLabel = Rectangle<int>::Rectangle(275, 325, 275, 100);
+    Rectangle<int> midDWSPLabel = Rectangle<int>::Rectangle(330, 355, 150, 100);
     g.drawFittedText("Downsample:", midDWSPLabel, Justification::centred, 1);
 
-    Rectangle<int> highDWSPLabel = Rectangle<int>::Rectangle(550, 325, 300, 100);
-    g.drawFittedText("Downsample:", highDWSPLabel, Justification::centred, 1);
+    Rectangle<int> highDWSPLabel = Rectangle<int>::Rectangle(615, 355, 150, 100);
+    g.drawFittedText("Downsample:", highDWSPLabel, Justification::left, 1);
 
     // GAIN
 
-    g.setFont(get8BitFont().withHeight(32.0f));
+    g.setFont(get8BitFont().withHeight(30.0f));
 
-    Rectangle<int> lowGainLabel = Rectangle<int>::Rectangle(125, 525, 100, 100);
+    Rectangle<int> lowGainLabel = Rectangle<int>::Rectangle(163, 515, 100, 100);
     g.drawFittedText("Gain:", lowGainLabel, Justification::left, 1);
 
-    Rectangle<int> midGainLabel = Rectangle<int>::Rectangle(400, 525, 100, 100);
+    Rectangle<int> midGainLabel = Rectangle<int>::Rectangle(450, 515, 100, 100);
     g.drawFittedText("Gain:", midGainLabel, Justification::left, 1);
 
-    Rectangle<int> highGainLabel = Rectangle<int>::Rectangle(700, 525, 100, 100);
+    Rectangle<int> highGainLabel = Rectangle<int>::Rectangle(735, 515, 100, 100);
     g.drawFittedText("Gain:", highGainLabel, Justification::left, 1);
-
-
     
-    // OBJECTS
-
-    // DWSP KNOB
-
-
-
 }
 
 void BrianTPFinalDigitalHellAudioProcessorEditor::resized()
@@ -431,49 +349,49 @@ void BrianTPFinalDigitalHellAudioProcessorEditor::resized()
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
 
-    // FREQUENCIES
-
-    mLowHPFcSlider.setBounds(200, 140, 80, 80);
-    mLowLPMidHPFcSlider.setBounds(335, 140, 80, 80);
-    mMidLPHighHPFcSlider.setBounds(450, 140, 80, 80);
-    mHighLPFcSlider.setBounds(775, 140, 80, 80);
-
     // BIT DEPTH KNOBS
 
-    Rectangle<int> lowCrushKnobRectangle = getSquare(252, 305, 115);
+    Rectangle<int> lowCrushKnobRectangle = getSquare(255, 345, 110);
     mLowCrushSlider.setBounds(lowCrushKnobRectangle);
 
-    Rectangle<int> midCrushKnobRectangle = getSquare(526, 305, 115);
+    Rectangle<int> midCrushKnobRectangle = getSquare(526, 345, 110);
     mMidCrushSlider.setBounds(midCrushKnobRectangle);
 
-    Rectangle<int> highCrushKnobRectangle = getSquare(825, 305, 115);
+    Rectangle<int> highCrushKnobRectangle = getSquare(825, 345, 110);
     mHighCrushSlider.setBounds(highCrushKnobRectangle);
 
     // DWSP KNOBS
 
-    Rectangle<int> lowDWSPKnobRectangle = getSquare(125, 460, 150);
+    Rectangle<int> lowDWSPKnobRectangle = getSquare(115, 490, 150);
     mLowDWSPSlider.setBounds(lowDWSPKnobRectangle);
 
-    Rectangle<int> midDWSPKnobRectangle = getSquare(412, 460, 150);
+    Rectangle<int> midDWSPKnobRectangle = getSquare(405, 490, 150);
     mMidDWSPSlider.setBounds(midDWSPKnobRectangle);
 
-    Rectangle<int> highDWSPKnobRectangle = getSquare(700, 460, 150);
+    Rectangle<int> highDWSPKnobRectangle = getSquare(690, 490, 150);
     mHighDWSPSlider.setBounds(highDWSPKnobRectangle);
 
     // GAIN SLIDERS
 
-    mLowDBSlider.setBounds(225, 390, 50, 200);
-    mMidDBSlider.setBounds(500, 390, 50, 200);
-    mHighDBSlider.setBounds(800, 390, 50, 200);
+    mLowDBSlider.setBounds(230, 410, 50, 175);
+    mMidDBSlider.setBounds(515, 410, 50, 175);
+    mHighDBSlider.setBounds(800, 410, 50, 175);
 
     // SOLO BUTTONS
 
-    mLowSoloEnable.setBounds(15, 550, 100, 50);
-    mMidSoloEnable.setBounds(315, 550, 100, 50);
-    mHighSoloEnable.setBounds(590, 550, 100, 50);
+    mLowSoloEnable.setBounds(15, 540, 100, 50);
+    mMidSoloEnable.setBounds(315, 540, 100, 50);
+    mHighSoloEnable.setBounds(590, 540, 100, 50);
 
     mSavePresetButton.setBounds(625, 30, 100, 50);
     mLoadPresetButton.setBounds(725, 30, 100, 50);
+
+    // Frequency Slider
+
+    frequencySliderComponent.setBounds(frequencyComponentPosition);
+
+    // 50, 125, 765, 75
+    mFrequencySlider.setBounds(getBoundsForFreqSlider());
 
 }
 
